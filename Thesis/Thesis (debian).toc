@@ -1,0 +1,40 @@
+\contentsline {section}{\numberline {1}Abstract}{1}{section.1}
+\contentsline {section}{\numberline {2}Introduction}{1}{section.2}
+\contentsline {section}{\numberline {3}Theory}{1}{section.3}
+\contentsline {subsection}{\numberline {3.1}Pneumatic Muscle Actuators}{1}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Static Force Maps and Control Theory}{1}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}The Test Rig}{1}{subsection.3.3}
+\contentsline {section}{\numberline {4}Hardware Development}{2}{section.4}
+\contentsline {subsection}{\numberline {4.1}Outline}{2}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Power Supply}{4}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}DC/DC Regulator}{5}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Analogue and Digital Power Rails and Ground Planes}{8}{subsubsection.4.2.2}
+\contentsline {subsection}{\numberline {4.3}Rotary Encoder and Buttons}{10}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}The Rotary Encoder}{10}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}The Buttons}{11}{subsubsection.4.3.2}
+\contentsline {subsection}{\numberline {4.4}LEDs}{12}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Liquid Crystal Display}{12}{subsection.4.5}
+\contentsline {subsubsection}{\numberline {4.5.1}I\textsuperscript {2}C}{12}{subsubsection.4.5.1}
+\contentsline {subsubsection}{\numberline {4.5.2}Level Shifter}{12}{subsubsection.4.5.2}
+\contentsline {subsection}{\numberline {4.6}CAN bus}{14}{subsection.4.6}
+\contentsline {subsubsection}{\numberline {4.6.1}CAN Transceiver}{14}{subsubsection.4.6.1}
+\contentsline {subsubsection}{\numberline {4.6.2}CAN Bus Circuit Protection}{15}{subsubsection.4.6.2}
+\contentsline {subsection}{\numberline {4.7}Analogue Inputs}{15}{subsection.4.7}
+\contentsline {subsubsection}{\numberline {4.7.1}Voltage Reference}{17}{subsubsection.4.7.1}
+\contentsline {subsubsection}{\numberline {4.7.2}Pressure Sensor}{17}{subsubsection.4.7.2}
+\contentsline {subsubsection}{\numberline {4.7.3}Force Sensor}{18}{subsubsection.4.7.3}
+\contentsline {section}{\numberline {5}Software Development}{21}{section.5}
+\contentsline {subsection}{\numberline {5.1}Outline}{21}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Device Tree Overlays}{22}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}User Interface}{24}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}I\textsuperscript {2}C and LCD}{24}{subsubsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.2}Rotary Encoder and Button}{24}{subsubsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.3}Menu}{25}{subsubsection.5.3.3}
+\contentsline {subsection}{\numberline {5.4}Control System}{26}{subsection.5.4}
+\contentsline {subsubsection}{\numberline {5.4.1}Analogue to Digital Conversion}{26}{subsubsection.5.4.1}
+\contentsline {subsubsection}{\numberline {5.4.2}CAN bus}{26}{subsubsection.5.4.2}
+\contentsline {subsubsection}{\numberline {5.4.3}PID Controller with PRU Timer}{26}{subsubsection.5.4.3}
+\contentsline {subsection}{\numberline {5.5}Data Storage}{26}{subsection.5.5}
+\contentsline {section}{\numberline {6}Data Acquisition}{26}{section.6}
+\contentsline {section}{\numberline {7}Discussion}{26}{section.7}
+\contentsline {section}{\numberline {8}Conclusion}{26}{section.8}

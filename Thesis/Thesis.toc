@@ -1,0 +1,95 @@
+\contentsline {section}{\numberline {1}Introduction and Theory}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Pneumatic Muscle Actuators}{1}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Static Force Characteristic of PMAs}{1}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}The Test Rig}{3}{subsection.1.3}
+\contentsline {section}{\numberline {2}Hardware Development}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Overview}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Power Supply}{7}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}DC/DC Regulator}{8}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Analogue and Digital Power Rails and Ground Planes}{11}{subsubsection.2.2.2}
+\contentsline {subsection}{\numberline {2.3}Rotary Encoder and Buttons}{13}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.3.1}The Rotary Encoder}{13}{subsubsection.2.3.1}
+\contentsline {subsubsection}{\numberline {2.3.2}The Buttons}{14}{subsubsection.2.3.2}
+\contentsline {subsection}{\numberline {2.4}LEDs}{15}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Liquid Crystal Display}{16}{subsection.2.5}
+\contentsline {subsubsection}{\numberline {2.5.1}I\textsuperscript {2}C and Level Shifter}{16}{subsubsection.2.5.1}
+\contentsline {subsection}{\numberline {2.6}CAN bus}{17}{subsection.2.6}
+\contentsline {subsubsection}{\numberline {2.6.1}CAN Transceiver}{18}{subsubsection.2.6.1}
+\contentsline {subsubsection}{\numberline {2.6.2}CAN Bus Circuit Protection}{18}{subsubsection.2.6.2}
+\contentsline {subsection}{\numberline {2.7}Analogue Inputs}{19}{subsection.2.7}
+\contentsline {subsubsection}{\numberline {2.7.1}Voltage Reference}{20}{subsubsection.2.7.1}
+\contentsline {subsubsection}{\numberline {2.7.2}Pressure Sensor}{20}{subsubsection.2.7.2}
+\contentsline {subsubsection}{\numberline {2.7.3}Force Sensor}{21}{subsubsection.2.7.3}
+\contentsline {section}{\numberline {3}Software Development}{24}{section.3}
+\contentsline {subsection}{\numberline {3.1}Overview}{24}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Software Architecture}{24}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Control System and Programmable Real-Time Units}{26}{subsubsection.3.1.2}
+\contentsline {subsection}{\numberline {3.2}Device Tree Overlays}{26}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Control System and Data Handling}{28}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}PID Controller with PRU Timer}{28}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}CAN bus}{30}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.3}ADC and Data Handling}{30}{subsubsection.3.3.3}
+\contentsline {subsection}{\numberline {3.4}Menu and User Interface}{31}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Menu Structure}{34}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.2}Options and Measurement}{34}{subsubsection.3.4.2}
+\contentsline {subsubsection}{\numberline {3.4.3}I\textsuperscript {2}C and LCD}{37}{subsubsection.3.4.3}
+\contentsline {subsubsection}{\numberline {3.4.4}Rotary Encoder and Button}{38}{subsubsection.3.4.4}
+\contentsline {section}{\numberline {4}Test Measurements}{38}{section.4}
+\contentsline {subsection}{\numberline {4.1}Results}{39}{subsection.4.1}
+\contentsline {section}{\numberline {5}Discussion}{41}{section.5}
+\contentsline {section}{\numberline {6}Conclusion}{42}{section.6}
+\setcounter {tocdepth}{1}
+\contentsline {section}{Appendix \numberline {A}Circuit Schematic}{45}{Appendix.1.A}
+\contentsline {section}{Appendix \numberline {B}Board Layout}{47}{Appendix.1.B}
+\contentsline {subsection}{\numberline {B.1}Top}{47}{subsection.1.B.1}
+\contentsline {subsection}{\numberline {B.2}Bottom}{48}{subsection.1.B.2}
+\contentsline {section}{Appendix \numberline {C}Bill of Materials}{49}{Appendix.1.C}
+\contentsline {section}{Appendix \numberline {D}Example Device Tree Overlay}{52}{Appendix.1.D}
+\contentsline {section}{Appendix \numberline {E}Software API}{53}{Appendix.1.E}
+\contentsline {subsection}{\numberline {E.1}Menu Class Reference}{53}{subsection.1.E.1}
+\contentsline {subsubsection}{\numberline {E.1.1}Detailed Description}{54}{subsubsection.1.E.1.1}
+\contentsline {subsubsection}{\numberline {E.1.2}Constructor \& Destructor Documentation}{54}{subsubsection.1.E.1.2}
+\contentsline {paragraph}{\numberline {E.1.2.1}Menu()}{54}{paragraph.1.E.1.2.1}
+\contentsline {subsubsection}{\numberline {E.1.3}Member Function Documentation}{54}{subsubsection.1.E.1.3}
+\contentsline {paragraph}{\numberline {E.1.3.1}displayMenu()}{54}{paragraph.1.E.1.3.1}
+\contentsline {paragraph}{\numberline {E.1.3.2}initMenu()}{54}{paragraph.1.E.1.3.2}
+\contentsline {paragraph}{\numberline {E.1.3.3}updateDisplay()}{55}{paragraph.1.E.1.3.3}
+\contentsline {subsection}{\numberline {E.2}MenuNode Class Reference}{55}{subsection.1.E.2}
+\contentsline {subsubsection}{\numberline {E.2.1}Detailed Description}{56}{subsubsection.1.E.2.1}
+\contentsline {subsubsection}{\numberline {E.2.2}Constructor \& Destructor Documentation}{56}{subsubsection.1.E.2.2}
+\contentsline {paragraph}{\numberline {E.2.2.1}MenuNode()\hspace {0.1cm}{\relax \fontsize {10}{12}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep \topsep \z@ \parsep \parskip \itemsep \z@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \add@extra@listi {ftns}\ttfamily [1/2]}}{56}{paragraph.1.E.2.2.1}
+\contentsline {paragraph}{\numberline {E.2.2.2}MenuNode()\hspace {0.1cm}{\relax \fontsize {10}{12}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep \topsep \z@ \parsep \parskip \itemsep \z@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \add@extra@listi {ftns}\ttfamily [2/2]}}{56}{paragraph.1.E.2.2.2}
+\contentsline {subsubsection}{\numberline {E.2.3}Member Function Documentation}{57}{subsubsection.1.E.2.3}
+\contentsline {paragraph}{\numberline {E.2.3.1}getName()}{57}{paragraph.1.E.2.3.1}
+\contentsline {paragraph}{\numberline {E.2.3.2}setChild()}{57}{paragraph.1.E.2.3.2}
+\contentsline {paragraph}{\numberline {E.2.3.3}setName()}{57}{paragraph.1.E.2.3.3}
+\contentsline {subsubsection}{\numberline {E.2.4}Member Data Documentation}{58}{subsubsection.1.E.2.4}
+\contentsline {paragraph}{\numberline {E.2.4.1}useNode}{58}{paragraph.1.E.2.4.1}
+\contentsline {subsection}{\numberline {E.3}DeviceControl Class Reference}{58}{subsection.1.E.3}
+\contentsline {subsubsection}{\numberline {E.3.1}Detailed Description}{60}{subsubsection.1.E.3.1}
+\contentsline {subsubsection}{\numberline {E.3.2}Constructor \& Destructor Documentation}{60}{subsubsection.1.E.3.2}
+\contentsline {paragraph}{\numberline {E.3.2.1}DeviceControl()}{60}{paragraph.1.E.3.2.1}
+\contentsline {subsubsection}{\numberline {E.3.3}Member Function Documentation}{60}{subsubsection.1.E.3.3}
+\contentsline {paragraph}{\numberline {E.3.3.1}analogSwitch()}{60}{paragraph.1.E.3.3.1}
+\contentsline {paragraph}{\numberline {E.3.3.2}binary2Bar()}{61}{paragraph.1.E.3.3.2}
+\contentsline {paragraph}{\numberline {E.3.3.3}binary2Newton()}{61}{paragraph.1.E.3.3.3}
+\contentsline {paragraph}{\numberline {E.3.3.4}controlfunc()}{62}{paragraph.1.E.3.3.4}
+\contentsline {paragraph}{\numberline {E.3.3.5}initCANbus()}{62}{paragraph.1.E.3.3.5}
+\contentsline {paragraph}{\numberline {E.3.3.6}initI2C()}{62}{paragraph.1.E.3.3.6}
+\contentsline {paragraph}{\numberline {E.3.3.7}initPRU()}{62}{paragraph.1.E.3.3.7}
+\contentsline {paragraph}{\numberline {E.3.3.8}initValve()}{63}{paragraph.1.E.3.3.8}
+\contentsline {paragraph}{\numberline {E.3.3.9}loadProgram()}{63}{paragraph.1.E.3.3.9}
+\contentsline {paragraph}{\numberline {E.3.3.10}measureForce()}{63}{paragraph.1.E.3.3.10}
+\contentsline {paragraph}{\numberline {E.3.3.11}readAnalog()}{63}{paragraph.1.E.3.3.11}
+\contentsline {paragraph}{\numberline {E.3.3.12}saveProgram()}{64}{paragraph.1.E.3.3.12}
+\contentsline {paragraph}{\numberline {E.3.3.13}startThread()}{64}{paragraph.1.E.3.3.13}
+\contentsline {paragraph}{\numberline {E.3.3.14}terminateCANbus()}{64}{paragraph.1.E.3.3.14}
+\contentsline {paragraph}{\numberline {E.3.3.15}terminatePRU()}{64}{paragraph.1.E.3.3.15}
+\contentsline {paragraph}{\numberline {E.3.3.16}terminateThread()}{65}{paragraph.1.E.3.3.16}
+\contentsline {paragraph}{\numberline {E.3.3.17}thread\_helper()}{65}{paragraph.1.E.3.3.17}
+\contentsline {paragraph}{\numberline {E.3.3.18}writeMeasurementsToUSB()}{65}{paragraph.1.E.3.3.18}
+\contentsline {paragraph}{\numberline {E.3.3.19}writePressurePointsToUSB()}{66}{paragraph.1.E.3.3.19}
+\contentsline {section}{Appendix \numberline {F}Test Measurement Data}{67}{Appendix.1.F}
+\contentsline {subsection}{\numberline {F.1}Data.txt of muscle 1}{67}{subsection.1.F.1}
+\contentsline {subsection}{\numberline {F.2}Data.txt of muscle 2}{68}{subsection.1.F.2}
+\contentsline {section}{Appendix \numberline {G}MATLAB Script for Data Evaluation}{69}{Appendix.1.G}

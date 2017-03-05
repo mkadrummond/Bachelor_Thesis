@@ -1,0 +1,1408 @@
+\NeedsTeXFormat{LaTeX2e}[1995/06/01]   % Prüfe ob korrekte Version verwendet wird
+
+%\documentclass[11pt, a4paper, parskip=half*, bibliography=totoc, cleardoublepage=empty, final, numbers=noenddot]{scrbook} 
+%\documentclass[a4paper, oneside, 12pt, titlepage, table]{article}   %Grundeinstellungen
+\documentclass[a4paper, oneside, 12pt, titlepage, table]{scrartcl}   %Grundeinstellungen
+
+% Packages required by doxygen
+\usepackage{fixltx2e}
+\usepackage{calc}
+\usepackage{doxygen}
+\usepackage[export]{adjustbox} % also loads graphicx
+%\usepackage{graphicx}
+%\usepackage[utf8]{inputenc}
+\usepackage{makeidx}
+\usepackage{multicol}
+\usepackage{multirow}
+\PassOptionsToPackage{warn}{textcomp}
+\usepackage{textcomp}
+\usepackage[nointegrals]{wasysym}
+\usepackage{xcolor}
+
+\newcommand{\+}{}
+
+%
+% Technische Universitaet Berlin
+% Fachgebiet fuer Elektronische Mess- und Diagnosetechnik
+% Vorlage fuer Protokoll zum Praktikum Grundlagen der elektronischen Messtechnik
+% Berlin Oktober 2012
+% Erstellt von Elvira Fleig und Sebastian Nowoisky
+%
+%Pakete bei Bedarf auskommentieren
+\usepackage{hyperref}% http://ctan.org/pkg/hyperref
+\usepackage{bookmark}% http://ctan.org/pkg/bookmark
+%\usepackage[ngerman]{babel}
+%\usepackage[T1]{fontenc}
+%\usepackage[Latin1]{inputenc}
+\usepackage{inputenc}
+%!!! Es könnte sein, dass ihr eine andere Kodierung braucht. Wenn ihr Probleme mit der Anzeige von Umlauten habt, probiert es mit "latin1" (Windows), "applemac" (Mac OS) oder "utf8" (Unix).!!!
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[amssymb]{SIunits}
+\renewcommand{\familydefault}{\sfdefault} 
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+\usepackage{float}
+\usepackage{url}
+\usepackage[section]{placeins}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.75}
+\usepackage{caption}
+\captionsetup{font=footnotesize,width=0.8\textwidth,justification=centering}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage{changes}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{lmodern} % a font, I believe
+\usepackage[titletoc]{appendix}
+\usepackage{longtable}
+\usepackage{pdflscape}
+
+
+
+%BibTex nützlich zum Zitieren. Kann bei Nichtgebrauch auch auskommentiert werden.
+\usepackage{cite}
+%Colorpackage
+%\usepackage[usenames,dvipsnames]{xcolor}
+%Listings um Scilabquellcode leichter einzufügen
+\usepackage{listings}
+\lstset{%
+   basicstyle=\scriptsize\ttfamily,
+   %keywordstyle=\bfseries\ttfamily\color{NavyBlue},
+   %stringstyle=\color{Rhodamine}\ttfamily,
+   %commentstyle=\color{Green}\ttfamily,
+   keywordstyle=\bfseries\ttfamily\color{black},
+   stringstyle=\color{black}\ttfamily,
+   commentstyle=\color{black}\ttfamily,
+   emph={square}, 
+   %emphstyle=\color{blue}\texttt,
+   emphstyle=\color{black}\texttt,
+   emph={[2]root,base},
+   emphstyle={[2]\color{black}\texttt},
+   language=C++,%
+   tabsize=2,%
+%  basicstyle=\footnotesize\ttfamily,%
+   numbers=left,%
+   numberfirstline,%
+   showstringspaces=false,%
+   breaklines=true,%
+   breakatwhitespace=true,%
+   linewidth=0.95\textwidth,%
+   xleftmargin=0.075\textwidth,%
+   xrightmargin=0\textwidth,%
+   frame=tlrb,%
+   captionpos=t%
+   inputencoding={utf8},
+   extendedchars=false, 
+   literate={ü}{{\"u}}1
+   			{°}{{\degree}}1
+			{Ü}{{\"U}}1
+			{ä}{{\"a}}1
+			{ß}{{\"s}}1
+			{µ}{{\micro}}1, %
+   }
+
+
+\usepackage{titlesec}
+
+\setcounter{secnumdepth}{9}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+
+
+
+%Header Definitionen
+\usepackage{fancyhdr}
+
+\fancypagestyle{kurzfassung}{
+\fancyhf{}
+%\fancyhead[L]{\textsl{\thepage}}
+\fancyhead[R]{\textsl{Kurzfassung}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+}
+
+\fancypagestyle{abstract}{
+\fancyhf{}
+%\fancyhead[L]{\textsl{\thepage}}
+\fancyhead[R]{\textsl{Abstract}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+}
+
+\fancypagestyle{contents}{
+\fancyhf{}
+%\fancyhead[L]{\textsl{\thepage}}
+\fancyhead[R]{\textsl{Contents}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+}
+
+\fancypagestyle{style2}{
+\fancyhf{}
+\fancyhead[L]{\textsl{\rightmark}}
+\fancyhead[R]{\textsl{\leftmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+}
+
+
+
+\setlength{\headheight}{15pt} 
+%Abstand zwischen Absätzen, Zeilenabstände
+\usepackage{parskip}
+\voffset26pt 
+\parskip6pt
+%\parindent1cm  %Rückt erste Zeile eines neuen Absatzes ein
+\usepackage{setspace}
+\onehalfspacing
+
+
+
+%Hier beginnt das Dokument
+\begin{document}
+\pagenumbering{roman}
+
+\begin{titlepage}%
+ \vfill%
+        \begin{tabular}{ll}
+\begin{minipage}{0.5\textwidth}
+ \begin{figure}[H]
+ \raggedright
+  \includegraphics[scale=0.11]{logolst}\\
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\begin{figure}[H]
+\raggedleft
+%\includegraphics[scale=0.5]{tu-logo}\\
+\includegraphics[width=1\textwidth]{tu-logo}\\
+\end{figure}
+\end{minipage}
+\end{tabular}\\
+    \vspace*{3cm}
+    \begin{center}%
+      %Titel und Untertitel%
+     \begin{spacing}{2.5}
+         {\textbf{{\LARGE Development of a Test Rig for the Automated Measurement of the Static Force Characteristic of Pneumatic Muscle Actuators}{\\{\vspace*{1cm}\Large Bachelor Thesis}}}}%
+         \\[0.5\baselineskip]%
+     \end{spacing}%
+         {\large Michael Drummond\\ \# 351750}\\%
+        \vfill%
+            {\large 16th December, 2016}\\%
+        \vfill%
+        \begin{minipage}[t]{0.25\textwidth}%
+            \flushright\large%
+            Examiner: \\
+            Supervisor:                         
+        \end{minipage}%
+        \vspace{0pt}~%
+        \begin{minipage}[t]{0.45\textwidth}%
+            \flushleft\large%
+            %Dr.-Ing. Ivo Boblan \\
+            Prof. Dr.-Ing. J. Raisch \\%
+            M.Sc. M. Martens 
+        \end{minipage}%
+                \vfill%
+                    {\large%
+                        Control Systems Group\\
+						Institute of Energy and Automation Technology\\
+						Faculty IV - Electrical Engineering and Computer Science \par
+						Technische Universität Berlin
+                    }%
+    \end{center}%
+%
+        \end{titlepage}%
+
+
+%
+%\titlehead
+%{
+%\begin{tabular}{ll}
+%\begin{minipage}{0.5\textwidth}
+% \begin{figure}[H]
+% \raggedright
+%  \includegraphics[scale=3]{fachgebiets_logo}\\
+%\end{figure}
+%\end{minipage}
+%\begin{minipage}{0.5\textwidth}
+%\begin{figure}[H]
+%\raggedleft
+%\includegraphics[scale=0.04]{tu-logo}\\
+%\end{figure}
+%\end{minipage}
+%\end{tabular}\\
+%}
+%
+%\title {Development of a Test Rig for the Automated Measurement of the Static Force Characteristic of Pneumatic Muscle Actuators \vspace*{3em}}
+%\subtitle{Bachelor Thesis \vspace*{6em} }
+%\author{Michael Drummond \\
+%		\# 351750 \\
+%		}
+%\date{16\textsuperscript{th} December, 2016} 
+%
+%
+% 
+%
+%\maketitle  %Erstellt das Titelblatt wie oben definiert
+
+\thispagestyle{empty}
+
+\newpage
+
+  ~
+    \vspace{.3\textheight}
+    %\begin{center}
+    \section*{Eidesstattliche Erklärung}
+    %\end{center}
+    Die selbständige und eigenhändige Anfertigung versichert an Eides statt. \\
+    
+    \bigskip
+    Berlin, den
+
+\newpage
+
+\pagestyle{kurzfassung}
+\vspace*{5px}
+
+\section*{Kurzfassung}
+\textit{Pneumatische Muskelantriebe werden aufgrund ihrer Leichtigkeit und Konformität in einer Reihe von Roboteranwendungen eingesetzt. Das statische Kraftkennfeld beschreibt die Beziehung zwischen dem Innendruck eines pneumatischen Muskels, seiner Länge und der Kraft, die er ausübt. Das Kennfeld kann mathematisch oder experimentell ermittelt werden, wobei letztere zeitaufwendiger, aber aktuell genauer ist. Dies kann dann beispielsweise dazu verwendet werden, eine "sensorlose" Kontrollstrategie für ein antagonistisches Muskelpaar in einem Gelenk zu entwickeln.}
+
+\textit{Diese Arbeit beschreibt die Hard- und Softwareentwicklung eines Prüfstands zur schnellen und automatischen Messung des statischen Kraftkennfeldes eines pneumatischen Muskels. Das Gerät basiert auf einem Linux-Singleboard-Rechner, für den zusätzliche Schaltungen entworfen wurden und eine Leiterplatte entwickelt wurde. Es ist mit einem Display und Jog-Dial ausgestattet, mit dem ein Menü und Optionen navigiert und ausgewählt werden können. Ein digitaler PID-Regler regelt den Innendruck des zu testenden pneumatischen Muskels mit Hilfe eines Drucksensors. Schlie{\ss}lich nimmt ein Kraftsensor Messungen vor, um das statische Kraftkennfeld zu ermitteln.}
+
+\textit{Um die Wirksamkeit und Eignung der Vorrichtung vorzuführen, wird sie verwendet, um das statische Kraftkennfeld von zwei pneumatischen Muskeln zu bestimmen. Die Messungen zeigen die Leichtigkeit und Genauigkeit, mit der das Kennfeld solcher Muskeln ermittelt werden kann. Anschlie{\ss}end werden einige mögliche Erweiterungen und Verbesserungen der Vorrichtung besprochen.}
+    
+\newpage
+
+\pagestyle{abstract}
+\vspace*{5px}
+
+\section*{Abstract}
+\textit{Pneumatic muscle actuators are used in a range of robotics applications due to their lightweight and compliant nature. The static force characteristic describes the relationship of a pneumatic muscle's internal pressure, to its length and the force it exerts. The characteristic can be ascertained mathematically or experimentally, with the latter being time consuming but currently more accurate. This can then be used, for example, to develop a "sensorless" control strategy for an antagonistic muscle pair in a joint.}
+
+\textit{This thesis describes the hard- and software development of a test rig to rapidly and automatically measure the static force characteristic of a pneumatic muscle. The device is based around a Linux powered single board computer, for which additional circuitry was designed and a printed circuit board developed. It is equipped with a display and jog wheel, with which a menu and options can be navigated and selected. A discrete PID controller regulates the internal pressure of the pneumatic muscle being tested with the help of a pressure sensor. Finally, a force sensor takes readings to establish the static force characteristic.}
+
+\textit{To demonstrate the device's efficacy and suitability, it is used to determine the static force characteristics of two pneumatic muscles. The measurements show the ease and accuracy with which the characteristic of such muscles can be established. Lastly, some possible extensions and improvements to the device are discussed.}
+
+%\textit{A test rig for pneumatic muscles was developed, that largely automates the task of measuring their static force characteristic. The device is based around a Linux powered BeagleBone Black and incorporates a user interface to aid the selection of test parameters. Additional circuitry was developed and a printed circuit board designed, that interfaces sensor and bus signals with the central processor. A navigable user interface and core functions were programmed, including a discrete PID controller running in a background thread.}
+
+\newpage
+
+\pagestyle{contents}
+
+
+\tableofcontents % Inhaltsverzeichnis, auskommentieren wenn unnötig
+\newpage
+
+\pagenumbering{arabic}
+
+\pagestyle{style2}
+
+
+
+\section{Introduction and Theory}
+	\subsection{Pneumatic Muscle Actuators}
+	Pneumatic muscle actuators go by many names, such as braided pneumatic muscles (BPMs), McKibben pneumatic artificial muscles (PAMs), fluidic muscles or biomimetic actuators. First developed in the 1950s for use in an orthopaedic appliance by the physician Joseph McKibben \cite{McKibben}, PMAs have since been put to use in a range of applications from industry, to medicine and entertainment \cite{Kelasidi}. PMAs typically consist of an elastomeric tube or bladder, a braided mesh of non-elastic fibres that are either worked into the bladder or wrap around it like a sleeve, and two end fittings that seal the tube but for an opening which attaches to a source of compressed air. The non-elastic mesh is attached to the fittings so, when the bladder is inflated via the opening at one end, the bladder can only expand radially and a tensile force is generated in the axial direction \cite{Davis}.
+	
+	In robotic applications, PMAs have certain advantages over other actuators, such as servo-motors. In particular, they are lightweight and inherently compliant. As they are principally made of a membrane and some end fittings, a muscle such as that tested in Section \ref{sec:TestMeasurements} can weigh a little over 200\gram\ yet exert a maximum force of 6\kilo\newton . Furthermore, if a force is exerted on the muscle, it will "give in", without increasing the force in the actuation. This compliant nature makes it ideal in human robot interactions \cite{Doumit}.
+	
+	\subsection{Static Force Characteristic of PMAs}
+%	In a robotics application, understanding the forces involved is crucial to accurate control. The use of force sensors with PMAs, however, is often impractical, due to their size and weight. For a PMA the force exerted is dependent on a number of different variables \cite{Chou}, but chief among these is the pressure inside the muscle and its length. Sensors to detect these variables are cheap, light and small, and so can provide a practical surrogate for the exerted force. However, for this to be the case, an accurate relationship between internal pressure, length and force is required. The static force characteristic provides this relationship.	
+	
+	In robotics applications, fundamentally and in a physical sense, the actuators do work. In other words, $W = Fs$, the product of a force ($F$) that moves a displacement ($s$) is equal to the work done ($W$). This is evidently also the case for PMAs whose length changes with internal pressure. It is fair to say, that if no force is applied by the muscle, no work is done. Specifically, in a control environment, it is therefore crucial to understand the parameters that relate to this force.
+
+	The static force characteristic of a PMA describes the relationship between its internal pressure, its length and the force exerted. It is \textit{static} because the relationship is defined for situations in which the parameters do not change over time. This relationship is fundamental to all mathematical models that describe PMAs and these models always incorporate the static force characteristic. For example, the model for position control of Festo pneumatic muscles as developed by Boblan \cite{Boblan} is described as follows
+\begin{multline*}
+	F_{Festo}(L, P) = P\cdot \frac{\pi \cdot D^2_0}{4{L_0}^2 \cdot \tan^2(\Theta_0)} \cdot \left( 3L^2 - \frac{{L_0}^2}{\cos^2(\Theta_0)} \right) \\
+	- \frac{\pi \cdot E \cdot H \cdot D_0 \cdot L^2}{L_0\cdot\tan(\Theta_0)} \left( \frac{1}{\sqrt{\frac{{L_0}^2}{\cos^2(\Theta_0)}-{L_0}^2}} - \frac{1}{\sqrt{\frac{{L_0}^2}{\cos^2(\Theta_0)}-{L}^2}} \right)
+\end{multline*}
+
+This model expresses the force exerted by a Festo muscle in relation to its length ($L$) and pressure ($P$). In addition, the diameter of the muscle ($D_0$), the muscle membrane's thickness ($H$) and the angle of the fibres running through this ($\Theta_0$) tailor the model. ($E$) is an "elasticity module" that factors the elasticity of the membrane into the calculation. 
+
+Plot a graph of the above equation with all possible lengths and pressures that the muscle can attain and you get the static force characteristic as a curve. This can then be compared with a similar curve established experimentally. The comparison can inform the modification of the model.
+
+The aim of the model is to describe the static force characteristic in a mathematical sense, so that this can then be used to create accurate position control. A further, common use for these models is in angle controllers for a joint based around an antagonistic muscle pair. In these cases, the parameter to be controlled is the angle of the joint, and the difference between the forces of the flexor and extensor muscles dictates the torque applied to the joint. Equations that describe the function of the joints at all points can be developed. For microcontroller based control in anthropomorphic robots these non-linear equations are linearised around an operating point. From there the state-space model and transfer function can be derived and a robust controller developed. \cite{Boblan}
+
+In situations in which direct control of joint torque is wanted, the addition of force/torque sensors is necessary. These sensors invariably lead to more complex mechanical structures and can have a serious impact on cost in systems with many joints to control. However, there have been suggestions to develop a "sensorless" torque control strategy suitable for a joint based around an antagonistic muscle pair, that obviates the need for a force/torque sensor. The idea is to control the torque by directly controlling the force exerted by each muscle in the pair. Instead of using a force sensor, the force is estimated indirectly from the muscle length by means of the static force characteristic which has been measured beforehand. \cite{Vitiello} 
+
+An accurate, experimentally measured static force characteristic can take some time to measure manually. The advantage of an automated test rig is, that much larger quantities of data can be gathered. Firstly, this is beneficial in generating a more accurate picture of the static force characteristic; and secondly, that this permits the analysis of the data with statistical tools to identify random error. 
+
+	
+	
+
+
+
+	
+	
+	\subsection{The Test Rig}
+	The aim of the thesis was to create a self-contained device with which the static force characteristic of PMAs of different sizes could be tested automatically. Static force maps have previously been measured manually (M. Martens, personal communication, 2016). The set-up can be summarised as follows: a PMA is held at both ends at a given length with the aid of a rigid metal frame. A force sensor bridges the connection from the PMA to the frame at one end. As the internal pressure of the PMA is increased a tensional force is exerted on, and can be measured by, the force sensor. The force exerted is measured at multiple pressure points for a given length that the PMA is set at. This is repeated for multiple lengths, resulting in a "map" of the force response of a PMA at different pressures and lengths (see Figures \ref{fig:SFC1} and \ref{fig:SFC2} as examples).
+	
+	 The manual set-up involved opening a valve connecting the PMA to a source of compressed air by hand, adjusting to a given internal pressure of the PMA and reading the exerted force. The operation of the valve was not only time consuming but a laborious, repetitive action.  The force sensor itself was a strain gauge which translates changes in applied force into a voltage. This in turn needed to be amplified before being read with a multimeter, the result was then converted to ascertain the original force exerted. 
+	 
+	 Following a run through of the pressure points at a given length the PMA then needed to be manually unbolted from the rigid frame that was holding it. The length of the PMA would then have to be changed by adjusting its internal pressure, before being bolted to the frame once more. See \ref{fig:Setup2} for a photo of this set-up.
+	 
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.9\textwidth]{Setup2.png}	
+			\caption{The adjustable metal frame holding the muscle, with bolts and a line of screw holes to change the muscle's length. The strain gauge is just visible at the far end and the compressed air inlet at the near end. }
+			\label{fig:Setup2}
+		\end{figure}	
+	 
+	 For this thesis a device was to be developed reduced the time with which an operator would have to continually contend with adjusting the valve to achieve predefined pressures. In addition, the automated measurement of the force applied by the PMA was to be incorporated into the design, such that measurements could be repeated any number of times and the statistical relevance of the collected measurements be improved. 
+	 
+\section{Hardware Development}
+	\subsection{Overview}
+	Complex systems are best divided into their component parts. Figure \ref{fig:Concept} gives an indication of the relevant connections between the elements of the device, whether it is an input or output, and by which means the connection is made. 
+	
+	The BeagleBone Black, a single board computer (SBC) running Linux, was chosen as the core of the device. For this application a microcontroller board such as the Arduino Due would potentially have been sufficient. However, it was felt the additional power and possible future expansion options (onboard data processing; web server user interface) available on a Linux powered SBC outweighed the negatives of dealing with a more complex system. Other SBCs considered were the Raspberry Pi, but the sheer number of connection options available to the BeagleBone Black (critical to this project) made it the better choice.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.3]{System.png}
+		\caption{A simplified breakdown of device components, indicating direction of data transfer (I/O) and by which means}		
+		\label{fig:Concept}
+	\end{figure}	
+	
+	The BeagleBone Black is responsible for the control loop feedback mechanism that regulates the PMA internal pressure by means of the pressure sensor input and valve aperture output. Communication between the BeagleBone Black and the valve takes place over a CAN bus. The pressure sensor signal voltage has to undergo a small amount of signal conditioning before being converted by means of an analogue to digital converter on the Beaglebone Black. 
+	
+The static force characteristic is what ultimately needs to be established, that is the relationship between the internal pressure of the pneumatic muscle, its length and the force that it exerts. The user of the test rig will set the muscle to a given length, while the controller sets the internal pressure of the muscle. This will result in a force, and it is this that is to be measured.
+	
+	The signal from the force sensor is first passed through an external measurement amplifier before receiving signal conditioning and conversion via the BeagleBone Black's ADC. Once the measurements have been taken, the data (that is: force at a given length and internal pressure) can be transferred to a USB stick in an appropriate format for further processing elsewhere. The device and its function is controlled entirely with the use of a rotary encoder with a push button and an LCD Display (see \ref{sec:UserInterface} and Figure \ref{fig:StateChart}). A connection to a computer or other device is therefore not required.
+	
+			\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.9\textwidth]{Setup1.png}	
+			\caption{The complete test rig, with (from left to right) the control device, compressed air valve with a pressure sensor attached to its output, measurement amplifier (little grey box), and pneumatic muscle in adjustable frame.}
+			\label{fig:Setup2}
+		\end{figure}
+	
+	The BeagleBone black is designed to mate with expansion boards (known as capes), with which its functionality can be extended. For this thesis a cape was developed to accommodate the additional circuitry required to make the device self-contained. This additional circuitry can broadly be divided into the following sub-circuits: power regulation, analogue signal conditioning, level-shifter for the LCD, CAN bus, buttons and LEDs. Surface mount components were used almost exclusively, to keep the overall size of the cape small. The small size allowed for the device to be fitted inside an off-the-shelf housing, reducing total design time.
+	
+	The circuit and board were designed in Eagle, and the complete schematic and board layout can be viewed in appendices \ref{app:schematic} and \ref{app:layout} respectively. In addition, the complete bill of material is in appendix \ref{app:bom}.
+
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.9\textwidth]{BBBandPCB.png}	
+			\caption{Completed PCB attached to the BeagleBone Black (underneath the left side of the board). Power supply circuitry is on the near side of the board. Behind it and to the right are the analogue inputs and signal conditioning circuitry. Towards the back and the left (from this angle) is the connector to the display and optional buttons, with the rotary encoder poking out to the side. The CAN bus transceiver and other elements are not visible on the bottom side of the board. }
+			\label{fig:Setup2}
+		\end{figure}
+	
+	\subsection{Power Supply}
+	Table \ref{tab:PowerRequirements} outlines the power requirements of the connected devices. Important to note are the supply voltages of the measurement amplifier and the valve. As a result the system was designed from the outset to take a 24\volt\ input, with this being passed on to the measurement amp and the valve, while a DC/DC converter takes this down to 5\volt\ to run the BeagleBone Black and the other peripheral devices.
+	
+	\begin{table}[H]
+		\centering
+		\footnotesize
+		\renewcommand{\arraystretch}{1.5}
+		\begin{tabular}{p{5cm} c c}
+		& \multicolumn{2}{c}{\textbf{Power requirements}} 
+			\\ \cline{2-3}
+			\textbf{Device} 	& \textbf{Voltage} [\volt] 	& \textbf{Current} [\milli\ampere]
+			\\ \hline 
+			BeagleBone Black	& 5 						& max. 460
+			\\ \hline 
+			LCD display			& 5 						& 1.6
+			\\ \hline 
+			Pressure sensor 	& 5							& \textless 2  
+			\\ \hline
+			Measurement amp		& 24 						& 55...75
+			\\ \hline 
+			Valve				& 17...30					& max. 1100
+			\\ \hline 
+		\end{tabular}
+		\renewcommand{\arraystretch}{1}
+		\caption{Supply voltage and current draw of the connected devices}
+		\label{tab:PowerRequirements}
+	\end{table}	
+	
+	While the BeagleBone Black has a supply voltage of 5\volt , this is itself regulated further down internally to 3.3\volt . As a result the digital I/O pins of the BeagleBone Black all only accept or put out 3.3\volt . This is particularly relevant to the LCD display, which expects 5\volt\ signals over an I\textsuperscript{2}C bus (see \ref{sec:I2C}). The BeagleBone Black conveniently provides a pin at which to tap the regulated 3.3\volt\ and provide a third power rail to a number of sub-circuits describe later.
+	
+	Furthermore, the analogue to digital converter of the BeagleBone Black only accepts voltages between 0\volt\ and 1.8\volt. Here, again, an analogue voltage reference pin is provided and its use with the ADC is described in \ref{sec:ADCVoltage}.
+	
+		\subsubsection{DC/DC Regulator}		\label{sec:DC/DCRegulator}
+		There are essentially two types of voltage regulation: linear regulation and switching regulation. In its most basic form a linear regulator uses a series resistor to dissipate excess power as heat. To achieve a stable output voltage independent of the load a variable resistor and optionally a feedback loop is used. Such regulators are practical in their simplicity, but inefficient as excess power is dissipated as heat. If large voltage drops are required, the heat loss can be considerable.
+		
+		A switching regulator is an active device that achieves an average output by switching the voltage source on and off. A similar feedback mechanism to that found in linear regulators is used to control the output. While more expensive, switching regulators are considerably more efficient than linear regulators, as the only power losses occur during switching and these are small in comparison. Other advantages of switching regulators is that with some clever switching they can generate output voltages higher, or of opposite polarity than the input voltage.
+		
+		For this device a voltage drop from 24\volt\ to 5\volt\ was required. Table \ref{tab:PowerRequirements} lists the current draw of the main connected devices. The devices that draw the most current are the valve and the BeagleBone Black itself. The BeagleBone Black can reach its maximum current draw of 460\milli\ampere\ during the boot process; while idle, current draw is in the region of 300\milli\ampere \cite{BBB_SRM}. The valve draws 100\milli\ampere\ in mid-position but can reach 1100\milli\ampere\ at full stroke. As the valve is not in use during the BeagleBone Black boot process the current draw of the system will, during normal operation, not exceed 1500\milli\ampere, and this only for short periods of time. 
+		
+%something about why we then want to design for 3A... and not just 1.5		
+		
+		Given the above considerations a linear regulator would have to dissipate almost 30\watt\ of power at peak load ($1.5\ampere \cdot (24-5)\volt = 28.5\watt$). This isn't practical for small form-factor devices such as this and would generate too much heat. The better alternative is a switching regulator. Several manufacturers produce switching regulator integrated circuits. For this application the LM2596-5 Simple Switcher\textsuperscript{\textregistered} from Texas Instruments was selected. Specifically, this step-down voltage regulator provides a fixed 5\volt\ output and is capable of driving a 3\ampere\ load with excellent line and load regulation. Its comparatively high switching frequency of 150\kilo\hertz\ allows for smaller sized filter components, a useful attribute when space is at a premium. \cite{TI_LM2596}
+		
+		The LM2596 data sheet comes with extensive instructions on selecting the appropriate values for the peripheral components required. A maximum load current of 3\ampere\ was assumed, and where possible values were selected to minimise output voltage ripple (for example in the selection of the output capacitor). The circuit was subsequently built and tested on perfboard. The final design of the power supply can be seen in Figure \ref{fig:DCDCConverter}. 
+		
+		% more detail on chosen components needed here
+
+		The system receives 24\volt\ via a barrel connector from a power supply. % mention the removal of the barrel jack/connector from the beaglebone
+				
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.6]{DCDCConverter.png}
+			\caption{Circuit diagram of the DC/DC regulator and periferal components}		
+			\label{fig:DCDCConverter}
+		\end{figure}	
+			
+		The design incorporates several additional elements:
+		
+		\textbf{Over voltage protection.} This takes the form of a Transient Voltage Suppressor (TVS) diode anti-parallel with the power source  (D01). Well laid out TVS diodes are designed to have negligible impact on the normal operation of a circuit. The breakdown voltage of the TVS diode is usually in the region of 10\% greater than the reverse standoff voltage which approximates the circuit operating voltage. When a voltage transient occurs that exceeds the breakdown voltage of the TVS diode, it will limit the voltage spike to the TVS diode's clamping voltage and conduct the transient current to ground \cite{VGS_AN88436}.
+			
+		For this device the SMBJ24A 600\watt\ TVS diode from Fairchild Semiconductor was chosen due to its combined small package size, peak pulse power capability (600\watt ) and fast response time (typically less than 1\pico\second\ from 0\volt ). The reverse stand-off voltage of the SMBJ24A is 24\volt , the breakdown voltage lies between 26.7 and 29.5\volt , and the peak pulse current is 15.4\ampere \cite{FS_SMBJ24}. 
+
+		\begin{wrapfigure}{R}{0.4\textwidth}
+			\centering
+			\includegraphics[scale=0.8]{MOSFET_RPP.png}
+			\caption{A common protection circuit against reverse polarity}		
+			\label{fig:MOSFET_RPP}
+		\end{wrapfigure}			
+			
+		\textbf{Reverse polarity protection.} There are several options for implementing reverse polarity protection. In low voltage systems where a voltage drop can't be afforded, the use of a P-channel MOSFET is common, as its effect on the voltage supply is minimal (Figure \ref{fig:MOSFET_RPP}). 
+		
+		% more info on this circuit?
+		
+		For the system being designed a simpler option is acceptable. A rectifier diode is placed in series with the power source (D00). During normal operation the diode is forward biased and current flows to the circuit. Should the polarity of the voltage be reversed, in other words the diode is now reverse biased, the diode will block and the circuit will see no current. The disadvantage of this simpler solution is that the diode exhibits a forward voltage drop; as a result the circuit will no longer receive 24\volt . The rectifier diode chosen for the circuit (see below) has a forward voltage drop of 1.3\volt , so the circuit can expect to see 22.7\volt\ instead of 24\volt . While the nominal operating voltage of the valve is at 24\volt , the operating voltage range lies between 18\volt\ and 30 \volt . Similarly the Measurement amplifier has a nominal supply voltage range of 12\volt\ to 24\volt . In both cases the voltage drop caused by the rectifier is of no consequence.
+		
+		The RS3G Fast Switching Rectifier from Vishay was chosen for its small package size, high forward current (3\ampere ) and fast switching time.
+		
+		\textbf{Additional voltage smoothing.} In addition to the 220\micro\farad\ input capacitor (C01) stipulated by the DC/DC regulator data sheet, a 100\nano\farad capacitor (C00) was added in parallel to remove high frequency input noise. Similarly output ripple and noise were further stabilised with an additional 220\micro\henry\ inductor (L2), 10\micro\farad , 1000\micro\farad , and 100\nano\farad capacitors (C03, C04 and C05 respectively). The values were chosen so as to suppress a broad sweep of frequencies.
+		
+		% was this tested? yes, not ripple could be detected
+		
+		\textbf{An indicator LED.} A simple visual indicator placed at the point at which the 5\volt\ produced by the DC/DC regulator enters the BeagleBone Black. The BeagleBone Black should enter its boot procedure once 5\volt\ are connected, so if the LED is on and the boot process doesn't occur, a problem can be inferred.
+		
+		\subsubsection{Analogue and Digital Power Rails and Ground Planes} \label{sec:GroundPlane}
+		Digital circuitry is noisy, with rapid switching resulting in current transients and electromagnetic interference in the power supply. The logic levels of digital circuits are themselves virtually immune to these effects, however analogue circuitry powered by the same supply can be vulnerable to induced noise. This is particularly important in signal conditioning circuitry where the fidelity of the signal to be measured is important. Similarly, measurements made with respect to ground need a solid ground. Ground planes underneath digital circuits will suffer from switching noise generated by the digital circuit.   
+		
+		To minimise the effect of the digital circuitry on the analogue circuitry a separate analogue ground plane and analogue 5\volt\ power rail were introduced. Figure \ref{fig:AnaGND} shows how the regulated 5\volt\ output from the BeagleBone Black was uncoupled from the 5\volt\ analogue power rail. This was achieved with an EMI suppression ferrite bead (L3) and two capacitors (10\micro\farad\ and 100\nano\farad ). 		
+		
+		Ferrite beads are passive electronic devices whose impedance phase angle changes with changes in frequency. Initially, at relatively low frequencies a ferrite bead behaves much like an inductor and its reactive impedance dominates. As the frequency rises, so does the ferrite's impedance, which is initially entirely to do with a rise in reactance. However, at some stage there is a frequency dependent rise in resistance, which eventually overtakes the ferrite's reactance. With even greater frequencies the reactance starts to drop off and by the time the ferrite's impedance peaks, it is entirely resistive. See Figure \ref{fig:Ferrite} for the typical impedance characteristic of the ferrite bead used in this device.
+		
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.8]{Ferrite.png}
+			\caption{Ferrite bead impedance characteristic (taken from the data sheet of the WE-CBF ferrite bead used in the device)}		
+			\label{fig:Ferrite}
+		\end{figure}
+
+		
+		Ferrites are often used for electromagnetic interference (EMI) suppression applications, where they are placed in series with a power rail. The frequencies to suppress should be well into the resistive region of the ferrite, which causes the high frequency noise energy to be dissipated as heat. \cite{AD_AN1368}
+		
+		The AM335x of the BeagleBone Black has a clock frequency of 1\giga\hertz , so a ferrite bead was chosen whose resistance peaks in this region. The ferrite bead is complimented by two capacitors to ground, forming a low pass filter which further suppresses higher frequencies on the supply rail. Space was made for an additional decoupling capacitor (C09) if further filtering is deemed necessary once the board is taken into operation.  
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{AnaGND.png}
+			\caption{Circuit diagram of the interfaces between the analogue and ground planes (left), and the analogue and digital 5\volt power rails (right)}		
+			\label{fig:AnaGND}
+		\end{figure}
+
+The circuit of the connection between the digital and analogue ground (Figure \ref{fig:AnaGND}) is simply a 0\ohm\ resistor. In itself, this means nothing, as the resistor has no effect other than to connect the two grounds. However, in practical terms during PCB layout, this enforces the connection of the two ground planes at a single point. Known as star point grounding, the principle of connecting grounds at a single point ensures that all voltages are measured with respect to a particular point, and not just at an undefined "ground" \cite{LinearCircuit}. In many cases a convenient point at which to connect the ground planes is at the power supply. Figure \ref{fig:GNDPlanes} shows the bottom of the developed PCB, with digital ground occupying most of the board. Analogue ground is in the bottom left quarter of the board. The two grounds are completely separate, except for the 0\ohm\ resistor which lies at the top of the board, analogue ground trace that runs up the left hand side of the board. The resistor sits next to the power source and defines the common, defined ground between the two sides of the circuit.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.3]{GNDPlanes_negative.png}
+			\caption{PCB layout showing the ground planes on the bottom of the board}		
+			\label{fig:GNDPlanes}
+		\end{figure}
+
+	\subsection{Rotary Encoder and Buttons} \label{sec:Rotary Encoder and Buttons}
+		\subsubsection{The Rotary Encoder}	\label{sec:encoder}
+		Control and navigation through the device options (see \ref{sec:UserInterface}) is enabled with the use of a rotary encoder. An encoder or jog wheel was considered a more intuitive interface for setting the valve than a series of buttons, and had the added benefit of giving the device a cleaner appearance. 
+		
+		The rotary encoder used here is a quadrature encoder, in other words it uses two output channels (A and B) which are 90 degrees out of phase with each other. The square wave output of the two channels can be used to track both position and direction of rotation. 
+
+% could do with a picture here 		
+		
+		The Texas Instruments Sitara processor on the BeagleBone Black includes an Enhanced Quadrature Encoder Pulse (eQEP) Module as part of its Pulse-Width Modulation Subsystem (PWMSS). The eQEP simplifies the implementation of an encoder by decoding its input and making it available to the programmer as a single integer value that is incremented or decremented accordingly. In terms of hardware, the two encoder signal lines simply need to be connected to the correct two pins on the BeagleBone Black, and ground to ground. 
+		
+		The LCD display on the top face of the device and the device's overall compact size meant placing the encoder next to the display was no longer possible. To make its use ergonomic the rotary encoder was moved to the right hand side of the device, and is thus angled at 90\degree\ to the PCB. 
+					
+		\subsubsection{The Buttons}
+		The rotary encoder has a built-in push button switch. This momentary switch allows for the selection of options during the navigation of the GUI. As the device was to include the option of expanding its initial functionality, space for a further three switches was made by including three two-pin Molex connectors. The switch and the three headers are connected at one end to ground, at the other to the 3.3\volt\ power rail (via a pull-up resistor) and a GPIO pin of the BeagleBone Black via a debounce circuit. 
+		
+		The debounce circuit takes the form of a passive, single pole, low pass filter ($\tau =$ 1\milli\second ) followed by a Schmitt trigger (Figure \ref{fig:Buttons}). The filter slows and smooths the switch signal, and when combined with the hysteresis of the Schmitt trigger leads to sharper transitions in the signal arriving at the GPIO pins of the BeagleBone Black.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.8]{Buttons.png}
+			\caption{Debounce circuitry of the buttons. Note the encoder connected to button 2.}		
+			\label{fig:Buttons}
+		\end{figure}	
+		
+	\subsection{LEDs}
+	In addition to the power supply LED (see \ref{sec:DC/DCRegulator}) a further three LEDs were added to the device to provide someone programming the device with a simple debugging tool or a user with a visual cue that the system is working. These were connected indirectly to individual GPIO pins via N-channel MOSFETs. This adds a level of protection to the pins, should there be excessive current drawn (Figure \ref{fig:LEDs}).
+	
+	% more info on why they are connected to 5V, why the transistors (current protection of the BBB), those 100kOhm resistors, and maybe current flow through the LEDs and which were chosen
+	
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{LEDs.png}
+			\caption{The connected LEDs}		
+			\label{fig:LEDs}
+		\end{figure}	
+	
+	
+	\subsection{Liquid Crystal Display} \label{sec: Liquid Crystal Display}
+	The liquid crystal display (LCD) of the device is a 4 line, 20 character, blue backlit display. The LCD's Hitachi HD44780 controller is connected on-board with an I\textsuperscript{2}C interface, cutting down the number of pins required to control the display significantly (from 12 pins in four-bit HD44780 operation, to four pins for I\textsuperscript{2}C). Supply and logic level voltage of the display are 5\volt .		
+		
+		\subsubsection{I\textsuperscript{2}C and Level Shifter} \label{sec:I2C}
+		Logic level voltage of the BeagleBone Black pins is 3.3\volt, so a bi-directional level shifter circuit was placed between the I\textsuperscript{2}C data (SDA) and clock (SCL) pins and those of the display (Figure \ref{fig:I2C}). The level shifter ensures that the 3.3\volt\ logic signals from the BeagleBone Black are read as 5\volt\ signals at the display.
+		
+		The circuit involves an n-channel MOSFET (Q30 and Q31) placed on each of the signal lines (SDA and SCL), with source connected to the 3.3\volt\ bus line and drain to the 5\volt\ bus line. These are flanked by pull-up resistors to the two power rails (R30 to R33). The gates of both MOSFETS are connected to the lower voltage supply rail (3.3\volt ).
+		
+		In this configuration, if neither side is pulled down, the pull-up resistors result in 3.3\volt\ at one end of the bus line and 5\volt\ at the other. Should the 3.3\volt\ end of the bus line be pulled down, \volt \textsubscript{GS} will rise, the MOSFET conduct and the 5\volt\ end of the the bus will also be pulled down. Equally, should the 5\volt\ end of the bus be pulled down, the body diode of the MOSFET will conduct, again drawing \volt\textsubscript{GS} down until the MOSFET conducts and the bus line is pulled down to the same level at both ends. \cite{NXP_AN10441}    
+		
+% need and explanation of R34 and R35
+		
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.85]{I2C.png}
+			\caption{The logic level shifting circuit between the I\textsuperscript{2}C pins of the BeagleBone Black and those of the display}		
+			\label{fig:I2C}
+		\end{figure}
+				
+	\subsection{CAN bus} \label{sec:CAN}
+	% include an explanation of why we need this. ie to control the valve (actuator), and how that ties in with the control loop
+	% Include a broader description of what CAN is. differential signal etc...	
+	
+	The AM335x processor on the BeagleBone Black incorporates a module for accessing a Controller Area Network (CAN) bus. The DCAN module provides support for CAN protocol version 2.0 at bit rates up to 1MBit/s \cite{TechRefMan}. The AM335x includes two instantiations of the DCAN controller (DCAN0 and DCAN1), both are connected to pins on the P9 header of the Beaglebone Black \cite{BBB_SRM}. Due to the high frequency switching on the RXD and TXD lines of the CAN controller these should not be placed over a ground plane. The RXD and TXD of DCAN1 are connected to pins 24 and 26, but their use would interfere with the ground plane that extends from the left to the right side of the board. The ground plane is itself constrained by the analogue circuitry at the bottom left of the board. For this reason, DCAN0 with its RXD and TXD lines connected to pins 19 and 20 was chosen to provide the CAN controller.	
+	
+		\subsubsection{CAN Transceiver}
+		Additional hardware, in the form of a transceiver, is required for the connection to the physical CAN bus \cite{TI_SLLA270}. As the RXD/TXD pins of the BeagleBone Black operate at 3.3\volt an appropriate 3.3\volt CAN bus transceiver was needed. For this the Texas Instruments SN65HVD232 was chosen (U40, Figure \ref{fig:CANbus}). Following the data sheet layout guidelines, serial resistors (R40 and R41) were placed to limit current on the digital lines \cite{CANbus_transceiver}. An optional pull up resistor (R42) was used to drive the recessive input state of the transceiver. High speed CAN (see ISO 11898-2\cite{ISO11898}) requires termination resistors at both ends of the transmission lines. The resistors match the nominal impedance of the cable, which the CAN standard specifies as 120\ohm . R43 is such a termination resistor, placed as close to the CAN High and CAN Low pins of the transceiver as possible. In addition, a bypass capacitor was placed as close as possible to the supply pins of the transceiver (C40), and bulk and bypass capacitors were placed on the 24\volt\ supply line of the valve (C41 and C42).
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.82]{CANbus.png}
+			\caption{CAN transceiver, ESD protection diodes, and circuitry connecting the on-board CAN controller with the CAN bus}		
+			\label{fig:CANbus}
+		\end{figure}		
+		
+		\subsubsection{CAN Bus Circuit Protection}
+		The on-chip electrostatic discharge (ESD) protection of the CAN transceiver is good enough for many applications, but insufficient for electrical fast transients (EFT) and surge transients occurring in industrial environments\cite{CANbus_transceiver}. While this device is unlikely to leave the laboratory, good practice in designing a robust and reliable bus node was followed and additional circuit protection was added. This took the form of a CAN bus ESD protection diode from NXP Semiconductors (PESD2CAN, U41 in Figure \ref{fig:CANbus}). This was placed close to where the bus connects with the board to prevent the transients from propagating on the PCB.  
+		
+	\subsection{Analogue Inputs} \label{sec:AnalogueInputs}
+	The analogue inputs are core elements of the device. Input from the pressure sensor is used in the control function to find the pressure set point selected by the user. The accurate setting of the muscle is conditional on the accuracy of the feedback response measured by the pressure sensor. Once the set point has been reached, the device takes a force measurement from the force sensor. This data underpins the measurement of the static force characteristic of the PMAs, and so its accuracy is likewise essential.
+	
+	The AM335x processor of the BeagleBone Black includes a subsystem with an 8-channel general-purpose analogue-to-digital converter (ADC), with optional support for interleaving touchscreen conversions for a resistive panel (abbreviated to TSC\_ADC\_SS)\cite{TechRefMan}. 
+	
+	The subsystem comprises of a single 12 bit Successive Approximation Register (SAR) ADC that is multiplexed to the 8 channels. The ADC will measure voltages between 0 and 1.8\volt. The 1.8\volt\ supply that drives the ADC is provided as a voltage reference on a pin of the BeagleBone Black, as is an analogue ground pin. Both the pressure and force input signals require conditioning to bring them within the voltage span of the ADC. In both cases this was achieved with a simple voltage divider (Figures \ref{fig:Pressure} and \ref{fig:Force}). 
+	
+	The ADC has a maximum sampling rate of 200\kilo\hertz . This is significantly faster than the sub kilohertz sampling rate anticipated for the device, even if measurements are taken from two channels. The sampling frequency determines the input impedance of this ADC, so with both pressure and force measurements each taken at 100\hertz\ the input impedance equates to \cite{TI_AM335x}
+	\begin{align*} 
+		\frac{1}{65.97{\times10^{-12}} \cdot 200\hertz } \approx 75.8\mega\ohm
+	\end{align*}
+	
+	While this input impedance may be sufficient given the device's current application, a change (for example) in measurement frequency could easily bring the introduced error caused by input overloading to an unacceptable level. For this reason a unity-gain buffer was placed between the voltage dividers and the ADC input (Figures \ref{fig:Pressure} and \ref{fig:Force}). This impedance matching was implemented with the MCP6004 quad op-amp IC from Microchip Technology inc.
+	
+	% this also prevents excessive current draw that could damage the adc input
+	
+	A further consideration was the small capacitor that the sample and hold element of the ADC uses. This can cause problems for the buffer's op-amp at high sampling frequencies. If the dynamics of the op-amp are too slow, the capacitive load on the op-amp can result in settling times that can skew the result. To deal with this, a simple RC filter can be placed between the buffer output and ADC input. Space for such filters were made in the design, but given the low sampling frequencies planned for this device, they were not instantiated.
+
+		\subsubsection{Voltage Reference} 			\label{sec:ADCVoltage}
+		The BeagleBone Black 1.8\volt\ ADC voltage reference pin was used to drive four op-amps required for impedance matching in the signal conditioning circuitry of the analogue inputs (described above). To prevent the circuit drawing a current that could damage the BeagleBone Black, the output of the voltage reference pin was itself buffered, as in Figure \ref{fig:VREF}. The component used here was a MCP6001 single op-amp, supplied by the 5\volt\ analogue rail. In addition to a 100\nano\farad\ bypass capacitor, a 10\micro\farad\ bulk capacitor and 5\ohm\ resistor were placed at the end of the 5\volt\ supply to prevent any drops in the supply and maintain an accurate reference.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.85]{VREF.png}
+			\caption{VREF}		
+			\label{fig:VREF}
+		\end{figure}				
+		
+		\subsubsection{Pressure Sensor} \label{sec:pressure sensor}
+		The 1.8\volt\ voltage reference supplies the quad op-amp IC, of which one op-amp is used in the signal conditioning of the pressure sensor input (Figure \ref{fig:Pressure}). The pressure sensor is supplied by the analogue 5\volt\ rail, filtered and supported by bypass and bulk capacitors. The sensor output is a value between 0 and 5\volt\ which is paired down in a voltage divider to bring it to between 0 and 1.8\volt . Resistors with  0.1\% tolerance were selected to improve accuracy. The voltage divider is followed by a unity gain buffer to match the divider's impedance to that of the analogue input pin of the BeagleBone Black (described above). The total resistance of the divider was aimed in the region of 150\kilo\ohm . The relatively high resistance prevents the sensor measurement from being negatively impacted by a high current draw. Moreover, the unity gain buffer negates the problems the high resistance of the divider might cause with the ADC input. 
+		
+		The pressure sensor was connected with AIN0 of the BeagleBone Black.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.85]{Pressure.png}
+			\caption{Pressure}		
+			\label{fig:Pressure}
+		\end{figure}		
+		
+		\subsubsection{Force Sensor} 	\label{sec:ForceSensor}
+%what type of force sensor is it actually? and mention to measurement applifier too 
+		The force sensor use the rig was a KD9363S from ME-Meßsysteme GmbH with a full scale nominal load of 1 \tonne and an output of 3\milli\volt\per\volt at full scale. This was supplied with 5\volt\ by a GSV-1A measurement amplifier, also from ME-Meßsysteme GmbH. The amplifier's sensitivity is 2\milli\volt\per\volt .
+		
+		The signal conditioning circuitry connecting the force sensor to the BeagleBone Black is built on a similar set-up to that of the pressure sensor. That is to say, a voltage divider pairs the signal down to between 0 and 1.8\volt\ and a unity gain buffer matches the impedance to that of the input of the ADC. However, several further additions enhance the accuracy of the measurements (Figure \ref{fig:Force}).
+		
+		The output voltage of the force sensor's measurement amplifier is -10 to 10\volt. A positive voltage output indicates a tensile force on the strain gauge, while a negative voltage a compressive force. For this application, only tensile forces need to be measured and are expected. So, while the signal first passes through a voltage divider in which both positive and negative voltages are paired down, the unity gain buffer that follows will limit the signal to positive voltages. Thus, only voltages between 0 and 1.8\volt\ (representing the positive output range of the measurement amplifier) will be passed on to the BeagleBone Black's ADC. This maximises the measurement resolution by ignoring the negative voltages.
+		 
+		The PMAs to be tested by the rig are available in different diameters, from 5\milli\meter\ to 40\milli\meter . The larger the diameter of the PMA, the greater the force that it is able to exert. So, while the force sensor and external measurement amplifier are set up to read up to the 6\kilo\newton\ that the largest muscle can produce and convert it to a voltage between -10 and 10\volt , the maximum voltage output will only ever be reached by the very largest muscles. It is, therefore, only the force measurements of these PMAs that will use the full span of the 12 bit ADC on the BeagleBone Black, and that of the smaller PMAs will have a corresponding loss in resolution. To compensate for this, three voltage dividers with differing ratios were implemented. A CMOS analogue switch (U52, a Maxim MAX4662) placed before the dividers allows the user of the device to choose between them. During use only one switch will be "on" at any given time, and the signal will pass through this divider to be read by one of the ADC channels. 
+		
+		%something about the choice of analogue switch
+		% what pins are the switches connected to
+		%possible discussion on where and how the switch could have been set up (before/after each stage)
+		
+		The voltage dividers themselves are composed of 0.1\% tolerance metal film resistors. To improve accuracy and their flexibility in use, each divider is made up of two pairs of resistors in series. In so doing, sourcing appropriate resistor values for the divider ratio was made easier. The voltage divider ratios, and the switches they are connected to, are listed in table \ref{tab:VoltageDividers}. The user will select the input path based on the maximum voltages expected. For any given signal input path the dividers will convert the signal from between 0\volt\ and the respective maximum input voltage to between 0 and 1.8\volt .
+		
+		\begin{table}[H]
+			\centering
+			\footnotesize
+			\renewcommand{\arraystretch}{1.5}
+			\begin{tabular}{p{5cm} c c}
+			& \multicolumn{2}{c}{\textbf{Voltage divider}} 
+				\\ \cline{2-3}
+				\textbf{Analogue switch} 	& \textbf{Max. input} [\volt] 	& \textbf{Ratio}
+				\\ \hline 
+				Switch 1					& 3.3							& 1.8$\overline{\mbox{33}}$ 
+				\\ \hline 
+				Switch 2					& 10 							& 5.55
+				\\ \hline 
+				Switch 3					& 6								& 3.34 
+				\\ \hline
+			\end{tabular}
+			\renewcommand{\arraystretch}{1}
+			\caption{Analogue force sensor voltage dividers. Output voltage of the dividers is in all cases between 0 and 1.8\volt given an input between 0\volt\ and the maximum input of the signal path chosen by the switch.}
+			\label{tab:VoltageDividers}
+		\end{table}	
+		
+%		\begin{sidewaysfigure}
+%			\centering
+%			\includegraphics[scale=0.75]{Force.png}
+%			\caption{Force}		
+%			\label{fig:Force}
+%		\end{sidewaysfigure}		
+		
+		\begin{landscape}
+			\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.75]{Force.png}
+				\caption{Force}		
+				\label{fig:Force}
+				\end{figure}	
+		\end{landscape}	
+		
+\section{Software Development}
+	\subsection{Overview} 
+	The BeagleBone Black can run a fully fledged Linux operating system, courtesy of the Texas Instruments AM3358 ARM Cortex-A8 processor. Debian 8.6 (Jessie) was installed on the Beaglebone Black, and a cross-compilation environment to program in C++ was set up according to the instructions in chapter 7 of \cite{ExploringBeagleBone}. This involved the Eclipse IDE for C/C++ Developers (version: Mars.1 Release 4.5.1) running on a Debian remote machine. The software was compiled with the Cross GCC Compiler with the -std=c++11 compiler flag to enable support for the C++11 standard. As POSIX threads were used in this project and the pthread library is not included by default by the GCC compiler, it was enabled with -lpthread in the linker options.  
+	
+	% -static ?
+	
+	The development of the software can conceptually be divided into the following parts. The control system and measurement routine are central to what the device does, while the user interface and data handling facilitate its use. The control system has a PI-control function at its core, which  uses ADC and user input values to calculate output values for the valve. Once pressure levels are reached a force measurement is taken and stored. Which pressure values are set, the lengths the muscles are set to, and how often measurements are taken, are part of the measurement routine. The user interface revolves around a menu that pulls together the LCD display with the encoder and button input.
+	
+	The user has access to, and can modify, the measurement routine via the user interface. The control system and data handling, however, remain largely hidden.		
+	 
+	\subsubsection{Software Architecture} 
+	The UML (Unified Modeling language) class diagram in Figure \ref{fig:ClassDiagram} shows the class structure of the test rig software. Broadly speaking, the upper half of the diagram represents the classes and functions responsible for the user interface (menu, encoder, button and LCD). While the lower half depicts those elements responsible for the control system and data handling. The top-level functions in \textit{MenuStructure} form that part of the system that a user directly interacts with, and includes the measurement routine. These functions, and the underlying framework supporting the menu and its use, are described further in Section \ref{sec:UserInterface}. This is accompanied by a state diagram of the menu.
+	
+	The \textit{DeviceControl} class and its role in bringing the relevant aspects of the control system together is described in Section \ref{sec:ControlSystem}. Section \ref{sec:DataHandling} describes how this class manages the data used and generated by the test rig. An API of part of the software can be found in Appendix \ref{app:api}.
+	 
+	 	\begin{figure}[H]
+			\centering
+			\includegraphics[width = 0.9\textwidth]{ClassDiagram.png}
+			\caption{A UML class diagram indicating the classes, their attributes and functions, used in the test rig. The UML package symbol is used here (MenuStructure and USB) to represent collections of top-level functions that do not belong to a class.}		
+			\label{fig:ClassDiagram}
+		\end{figure}		
+	 
+
+	 % a service is called to start the program after system boot
+	 
+	  \subsubsection{Control System and Programmable Real-Time Units} 	\label{sec:Control System and Programmable Real-Time Units}
+	 A standard Linux kernel, such as the one that Debian is built on, is a preemptive kernel. Preemptive scheduling has many advantages, but it cannot execute tasks in real time. This is problematic in implementations of discrete-time PID controllers that rely on precise time intervals. 
+	 
+	 The BeagleBone Black's AM3358 includes a Programmable Real-Time Unit Subsystem and Industrial Communication Subsystem (PRU-ICSS), which provides a convenient way to implement real-time functionality where it is needed. The PRU-ICSS can be thought of as two 32 bit on-chip microcontrollers (known as PRUs) running at 200\mega\hertz. They have full access to the internal memory of the processor and it's peripherals, and single-cycle IO access to a number of pins (but not all). So, for example, an initial mock-up of the test rig had a PRU reading pressure values from the ADC and outputting a Pulse Width Modulation (PWM) signal to a valve. The PRU has single-cycle access to the ADC values, and the software defined PWM output used a GPIO pin.
+	 
+	 The PID controller would have been implemented on one of the PRUs with the help of an on board single-cycle 32 bit multiplier, however, external factors led to the PWM valve being replaced with a CAN-bus valve. The PRUs don't have direct access to the DCAN module that performs CAN protocol communication on the AM3358, so a hard real-time set-up of the control system fully implemented using the Programmable Real-Time units was no longer possible.
+	 
+	 To keep the control system simple, yet keep some of the benefits of the PRU-ICSS, the control system was programmed in Linux space, while an accurate timer was implemented using one of the PRUs. The PRU generates an interrupt at precise time intervals, that alert the controller running in a high priority thread in Linux space to calculate a new output value. 
+	 
+	\subsection{Device Tree Overlays}
+	The device tree is a data structure for describing hardware, that obviates the need to hard code details of a device into an operating system. Aspects of the hardware can be described in the device tree, which is passed to the operating system at boot time. Device Trees have become mandatory for all new ARM SoCs, and Debian Jessie (used on this device) is built on the Linux kernel version 3.16, which implements the Flattened Device Tree (FTD) model \cite{DeviceTree}. To enable runtime configuration of inputs and outputs on the BeagleBone Black, a system of Device Tree Overlays (DTOs) and a cape manager exist \cite{capemgr}.
+
+	The following device tree \textit{.dts} files were programmed, compiled as device tree binary overlays (\textit{.dtbo}), and placed in the /lib/firmware folder of the BeagleBone Black. At boot, the system loads the \textit{.dtbo} files to extend the device tree. Backup copies of these files were placed in /home/\textlangle username\textrangle /dts. An example .dts file (GPIOs.dts) is in Appendix \ref{app:DTS}.
+	
+	% parts of the following needs to be moved to the hardware section
+	
+	\begin{itemize}
+		\item \textbf{ADC.dts} Enables the use of the ADC channels 0 to 6. Pins 32 to 40 of the P9 header are exclusively used by the ADC. These pins include the voltage reference and analogue ground (described in \ref{sec:AnalogueInputs}) along with the 7 aforementioned input channels.
+		
+		\item \textbf{DCAN0.dts} Enables one of the DCAN controller modules that performs CAN protocol communication on the AM3358. DCAN0 was enabled for PCB design layout considerations (see \ref{sec:CAN}). RXD and TXD of DCAN0 are multiplexed to pins 19 and 20 of the P9 header of the BeagleBone Black. As the I\textsuperscript{2}C2 bus is set to default on these pins,  it was first necessary to modify the device tree binary that is used at boot (am335x-boneblack.dtb). This involved decompiling the binary, commenting out the section related to I\textsuperscript{2}C2 (starting line 78), recompiling and rebooting.
+		
+		\item \textbf{eQEP2.dts} The Enhanced Quadrature Encoder Pulse (eQEP) Module (described in \ref{sec:encoder} of the AM3358 chip provides an easy way to implement a quadrature encoder. Two of these modules are provided for on the BeagleBone Black; both on the P8 header. The rotary encoder was placed on the right-hand side of the device necessitating the removal of pins 13 to 26 of the P8 header. While both eQEP modules were still accessible, the placement of the buttons and their connection to pins 27 to 30, meant connecting the encoder to eQEP2 was the parsimonious choice. 
+		
+		%was this mentioned in the hardware section?! about the removal of pins for the encoder?
+		
+		\item \textbf{GPIOs.dts} Enables the pins 7 to 9 on the P8 header as outputs for the LEDs. In addition, pins 27 to 30, also on the P8 header, are configured as inputs for the buttons. Four inputs for buttons were made available, three connected to Molex headers that were not used and the fourth to the encoder button (see Section \ref{sec:Rotary Encoder and Buttons}). All seven pins are pulled down with no signal. 
+		
+		\item \textbf{I2C1.dts} With I\textsuperscript{2}C2 disabled to allow for DCAN0, and I\textsuperscript{2}C0 not exposed on the expansion headers, only I\textsuperscript{2}C1 was available to communicate with the display. The data (SDA) and clock (SCL) lines of the I\textsuperscript{2}C1 module are available either at pins 17 and 18 or pins 24 and 26 of the P9 header. To maximise space for the ground plane (see \ref{sec:GroundPlane}) the module was connected to pins 24 and 26.
+		
+		\item \textbf{PRU.dts} The Programmable Real-Time Units are also enabled over a device tree overlay. In this case both PRUs were enabled, although only one is used. Furthermore, a debug pin (pin 27 on header P9) was enabled to help verify the timer instantiated on the PRU.
+	\end{itemize}
+	
+	%mention the removal of mcasp0 (see notes) to allow for the placement of the switch pins
+	
+	
+	\subsection{Control System and Data Handling}	\label{sec:ControlSystem}
+	The \textit{DeviceControl} class (Figure \ref{fig:ClassDiagram}) controls access to the device specific elements of the test rig. The control system sub-systems include reading the ADC, placing packages on the CAN bus, and the PID controller itself. The \textit{DeviceControl} class includes functions to initialise and control these elements, as well as thread management functions, to run the controller in a separate thread to the main program. In addition, the \textit{DeviceControl} class includes data structures and functions to handle the user defined and generated data.
+
+	At program start an object of class \textit{DeviceControl} is instantiated and a POSIX thread is started with the \textit{startThread()} member function. This creates a thread running with a Round Robin schedule policy and a high thread priority. Portable Operating System Interface (POSIX) threads, or pthreads, are part of a family of standards specified by the IEEE \cite{POSIX}. It is a parallel execution model that exists independently of a language and allows a program to control multiple different flows of work that overlap in time. 
+	
+	On creation, the thread is passed a pointer to the function \textit{controlfunc}, which instantiates an object of class \textit{PID} and runs the control system in a loop. The thread will exit the loop and terminate when the global \textit{DeviceControl} member variable \textit{exitThread} is set to true. This only happens at shutdown.
+	
+		\subsubsection{PID Controller with PRU Timer} 	\label{sec:PIDController}
+
+		A proportional-integral-derivative (PID) controller is a control loop feedback mechanism that repeatedly calculates the error between a measured process variable and a desired set point. The controller modifies the output based on the proportional error, the integral of the error over time, and the derivative of the error. The original analogue PID controller can be represented as follows:
+		\begin{align*}
+		u(t) = K_pe(t) + K_i\int_0^t e(\tau)d\tau + K_d\frac{de(t)}{dt},
+		\end{align*}					
+
+	where $e$ is the error at time $t$ and $K_p$, $K_i$, and $K_d$ are the coefficients of the proportional, integral and derivative terms.
+	
+	For a digital system various methods exist for creating a discrete time version. For the purposes of this device the digital PID controller used can be expressed as follows:
+	\begin{align*}
+	u(k) = K_pe_k + K_i\sum_{n=1}^ke_n\Delta t + K_d[e_k - e_{k-1}]\Delta t,
+	\end{align*}	 		
+		
+		where, $k$ is the most recent sample and $\Delta t$ is the sampling period.
+		
+		The controller runs in a loop in the aforementioned thread, and this is paused in each iteration of the loop. The thread waits for an interrupt from the PRU timer with \textit{prussdrv\_pru\_wait\_event()} and only calculates a new output once the interrupt is triggered. The PRU timer was programmed in Assembler and sets the interrupt exactly every 10\milli\second , which results in the control algorithm running with this period. The reading of the ADC, running the control algorithm and placing the new output value on the CAN bus occurs significantly faster than 10\milli\second . That these actions are faster than the time interval is important, as it means the actions that are undertaken on every iteration of the control loop are happening at the defined time interval and not simply forever playing catch-up. That they are significantly faster, means that for practical purposes we can assume that these actions are all taking place at the instant that the interrupt is being triggered.
+
+% which compiler and flags for PRU compilation?
+	
+	The function \textit{calculate()} in the class \textit{PID} calculates and normalises the error between set point and measured pressure, assuming a maximum pressure of 8 \bbar . The P, I and D terms, and finally a new output are calculated. This is then denormalised and fit to the 12 bit input value of the pressure valve, before being returned and placed on the CAN bus.
+	
+	% "This is then denormalised and fit to the 12 bit input value of the pressure valve, before being returned..." has this changed?
+	
+	The control loop was tuned manually and the establishment of P, I and D terms was undertaken largely by trial and error. The proportional gain was set to 0.7, the integral gain to 1 and the derivative gain to 0. Figure \ref{fig:StepResponse} shows the effect of the integral term on the step response (proportional gain held at 0.7 and no derivative term).  The derivative term is useful in control loops where an overshoot is highly undesirable. In these cases it helps to dampen the effect of the proportional and integral terms, but this isn't particularly the case here. Furthermore, it can have undesirable effects in fast acting loops (such as flow and pressure loops) as its effect is strongest during the greatest change. In these instances it can be difficult to tune the controller well, it is susceptible to noise, can be unstable and brings few benefits.
+	
+		 	\begin{figure}[H]
+			\centering
+			\includegraphics[width = \textwidth]{Step_Response.png}
+			\caption{}		
+			\label{fig:StepResponse}
+		\end{figure}	
+   
+		\subsubsection{CAN bus}
+		To access a CAN bus the BeagleBone Black uses SocketCAN, a set of open source Linux CAN drivers and networking stack. In addition, the \textit{can-utils} package was downloaded to the device, as it provides some userspace utilities to facilitate the use of the SocketCAN subsystem \cite{can-utils}.
+		
+		Details of the proprietary Festo CAN protocol used by the pressure valve was obtained from an internal data sheet \cite{FestoCAN}. The example at \cite{CANexample} was modified and extended to cover the Festo protocol, and wrapped in a class. The \textit{CAN} class is instantiated at start up and passed to the instantiated \textit{DeviceControl} object.
+
+		\subsubsection{ADC and Data Handling}	\label{sec:DataHandling}
+		The user of the device selects which muscle diameter is to be tested as described in Section \ref{sec:UserInterface} and Figure \ref{fig:StateChart}. This choice switches the input path of the force sensor signal between the three voltage dividers. For this, \textit{DeviceControl} has three \textit{GPIO} pointers which are instantiated in its constructor and control the analogue switch (hardware described in Section \ref{sec:ForceSensor}). In addition, the three input paths connect to separate ADC channels, so when a call to the ADC is made the correct input channels must be selected.
+		
+		Analogue to digital conversion of the pressure sensor signal is undertaken with the \textit{DeviceControl} member function \textit{readAnalog()}, which reads the ADC channel input via a file stream. The value is first converted to a value in millibar with the help of the member function \textit{binary2Bar()} before being passed, together with a pointer to the pressure set point, to the \textit{PID} member function \textit{calculate()}.
+	
+	The set point and measured pressure are both stored as public member variables of the \textit{DeviceControl} class (\textit{pressureSetPoint} and \textit{pressureMeasured} respectively), and accessed by the \textit{PID calculate()} member function.
+	
+	\textit{DeviceControl} contains two vectors \textit{vLengths} and \textit{vMeasurements} that store instantiations of structs \textit{Length} and \textit{Measurement} respectively. A \textit{Length} struct stores the pressure and length values selected by a user (see \ref{sec:OptionsandMeasurement}. The \textit{vLengths} vector forms the basis of the measurement and is reflected in the \textit{Set lengths} menu. The fixed, predefined lengths allowed by the frame of the test rig means, that for any given muscle there will be no great variation in the \textit{vLengths} vector from one measurement to another. 
+	
+	The \textit{vMeasurments} vector is populated immediately prior to a measurement being undertaken. The \textit{Measurement} struct contains \textit{pressure} and \textit{force} fields. The user is asked to define how many additional pressure points should be measured between each length. This enables an increased resolution of the resulting static force characteristic of the PMA. This information and the \textit{Length}s from \textit{vLengths} are used to generate \textit{Measurement} structs in \textit{vMeasurements}. During the measurement routine the \textit{force} fields are filled by the measured forces.
+	
+	Following a measurement, the stored pressures, lengths and forces are moved to the \textit{data.txt} file on the USB stick. The first line lists the pressures at which a force measurements were made, with tabs separating the values. Subsequent lines start with a length value followed by the force measurements at this length. If multiple measurements for a given length were made, these are grouped together. Otherwise, the  lines of measurements are in the order of the lengths in \textit{vLengths} and by extension the \textit{Set lengths} menu vector. 
+	
+	% give a reference to an example output file here.   
+	
+%	As described above, the \textit{DeviceControl controlfunc()} member function runs in a separate background thread. The function runs in a loop with a period of 10\milli\second , in which a call to the ADC is made in each loop. 
+	
+	\subsection{Menu and User Interface} \label{sec:UserInterface}
+	A menu was created to allow a user of the device to select and change parameters of the test rig. A \textit{Menu} class acts as a container for a class of menu nodes (class \textit{MenuNode}, described in \textit{menu.h} and \textit{menu.cpp}), in which instantiated \textit{MenuNode} objects contain a vector of pointers to further \textit{MenuNodes} (simply named \textit{v}). These "child" nodes each have their own \textit{MenuNode} vectors, in which, by convention, the first element is the "parent" \textit{MenuNode} in whose vector the child resides. Each \textit{MenuNode} has a \textit{useNode()} function that is defined with a function pointer at object instantiation. In this way, a function  defining  what should happen when the node is "used" can be passed to the \textit{MenuNode}. 	
+		
+	Conceptually, one can differentiate between internal and terminal nodes, although this distinction isn't made in the software. Internal nodes will, when their \textit{useNode()} function is called, display the contents of their \textit{MenuNode} vectors, allowing the user to navigate further into the menu. In contrast, terminal nodes will display settings that can be changed by the user.
+
+	Besides a \textit{name} variable and the aforementioned vector, \textit{MenuNode} objects contain the member variables \textit{vectorCursor} and \textit{displayOffset}. The \textit{vectorCursor} variable is essentially an iterator for the vector. When linked with the encoder input, this variable allows the user to navigate the vector, and by extension, the menu. The \textit{displayOffset} variable is needed for displays that have fewer lines than the length of any given \textit{MenuNode} vector. In these cases, the lines that are displayed need to change depending on the \textit{vectorCursor} position in the vector. Both variables are set to zero at the instantiation of a \textit{MenuNode} object.		
+
+	The \textit{Menu} class contains an unordered map of the \textit{MenuNodes} used and a member function \textit{initMenu()}, which initialises the menu. Menu initialisation involves instantiation of the \textit{MenuNodes} and their vectors, passing function pointers to their \textit{useNode()} functions, and loading them into the unordered map. If the menu were to be extended at a later date, additional menu nodes should be added here.
+
+	The display and navigation of \textit{MenuNode} vectors is facilitated with the two \textit{Menu} member functions \textit{displayMenu()} and \textit{updateDisplay()}. These functions use the \textit{MemberNode} member variables \textit{vectorCursor} and \textit{diplayOffset} to display the appropriate nodes of the \textit{MenuNode} vector and cursor position on the LCD.  		
+	
+	Figure \ref{fig:StateChart} is a state diagram of the menu and indicates how a user can move between options in the menu. The test rig can be operated in manual or automatic modes. Manual mode simply allows the user to set a certain pressure in the PMA. Automatic mode is specifically for taking measurements to determine the static force characteristic of a PMA. The user can select how many and at which lengths measurements should be taken in the menu node \textit{Set Lengths}. Subsequently, when \textit{Start program} is selected, the user can decide at how many intervening pressure points the force should also be measured, and how many times the measurement cycles are to be repeated. 
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width = \textwidth]{StateChart.png}
+			\caption{State diagram  of the menu. On boot, the user finds themself at the root menu}		
+			\label{fig:StateChart}
+		\end{figure}			
+
+		\subsubsection{Menu Structure}	
+		The top-level functions that are passed as pointers to the \textit{MenuNode useNode()} member functions are declared and defined in MenuStructure.h and MenuStructure.cpp (Appendix \ref{app:api}). The functions have been given the prefix \textit{use} followed by the name of the node (e.g. \textit{useRoot}). The MenuStructure files also include a number of other functions that support the \textit{useNode()} functions.		
+		
+		The menu nodes \textit{root}, \textit{Automatic} and \textit{Set lengths} are internal nodes that primarily display the contents of their vectors, and allow the user to continue on to further options. The first \textit{MenuNode} in a given vector is displayed to the user on the LCD as "Back", as by convention this is the parent (see above), unless it's in the \textit{root} vector. 
+		
+%		\begin{figure}[H]
+%			\centering
+%			\includegraphics[scale=0.7]{Menu.png}
+%			\caption{Menu}		
+%			\label{fig:Menu}
+%		\end{figure}	
+		
+		If the button is pressed while navigating the menu, the \textit{useNode()} function of the \textit{MenuNode} of the current cursor position is called. This points to one of the following functions, whose actions are as described below.
+		
+		\textbf{\textit{useRoot()}} is called towards the end of \textit{main()}, once set-up and initialisation of the device has taken place. This is the starting point of the user. The \textit{MenuNode} vector of \textit{root} is displayed until the button is pressed and the user is passed on to the next menu node. Unlike the other \textit{useNode()} functions, \textit{useRoot()} contains an infinite while loop, so the user cannot drop out of the program from here. 
+
+	\textbf{\textit{useManual()}} calls a secondary function \textit{setPressure()}, which links the encoder position to the pressure set point of the PI controller running in a background thread. The function \textit{setPressure()} enters a while loop in which the set point is continually updated. To give the user a visual indication of when the set point is reached, the display is updated with the pressure set point and measured value. When the button is pressed, the while loop is exited and the function returns from \textit{setPressure()} and \textit{useManual()}. The program continues in the \textit{useRoot()} infinite loop and displays the contents of the \textit{root} vector. 
+		
+	\textbf{\textit{useAutomatic()}} is an internal node, that displays the contents of the \textit{MenuNode} vector of \textit{automatic}. It is from here that the user can set-up a measurement program. 
+
+		\subsubsection{Options and Measurement}	\label{sec:OptionsandMeasurement}	
+	
+		From the \textit{Automatic} menu (Figure \ref{fig:StateChart}) the user can set the lengths of the muscle that measurements should be taken, start the program of measurements or save/load a program stored on the USB stick.
+		
+		Save and load program either populate the \textit{vLengths} vector (see \ref{sec:DataHandling}) with data in the \textit{program.txt} file on the USB stick, or vice versa. In either case the data on the device being written to will be erased. The functions \textit{useSaveProgram} and \textit{useLoadProgram} in \textit{MenuStructure.cpp} handle the front end operation, while back end functionality is passed on to the relevant functions in the \textit{DeviceControl} class. 
+				
+		If no pre-existing program is to be used, the user would first select \textit{Set lengths} which calls the \textit{useSetLengths()} function. This is an internal node, that displays the contents of the \textit{MenuNode} vector of \textit{setLengths}, which itself is a reflection of the \textit{vLengths} vector. If there are no lengths store in \textit{vLengths}, then the user is confronted with the options \textit{Back} and \textit{Add new length}. From here the user can add or modify additional lengths at which to measure the exerted force. As lengths are added the menu is extended.
+		
+		The result of selecting \textit{Add new length} or to modify an existing length is similar. In both cases the user is moved through two screens: to first dial in a pressure value with the encoder that corresponds to the desired length, and then similarly input the length in the next. The difference is that \textit{Add new length} creates a new \textit{Length} object and adds it to \textit{vLengths} and creates a corresponding \textit{MenuNode} in the \textit{setLengths} vector, while modifying a length simply adjusts the values of the existing length. 
+		
+		This system of setting a pressure value before the length, is necessary with the current test rig frame, as this only allows for the muscle to be fixed at specific predefined lengths. During the selection of the pressure value, the encoder is connected to \textit{pressureSetPoint} of the \textit{DeviceControl} object, and by extension the PID controller that sets the pressure in the muscle. This means that the user can adjust the length of the muscle to fit to the fixing points of the frame. The measurement of length remains a manual affair and the value is selected via the encoder.
+							
+	At this stage the user will have selected which lengths (with their pressure values) are to form the backbone of the measurements. When the user selects the \textit{Start program} menu node in \textit{Automatic} mode the program enters \textit{startProgram} and some final options can be selected, before the measurement routine commences. 
+
+	Initially, a couple of housekeeping functions check some of the resources required. First, the CAN bus and valve are initialised again with \textit{initCANbus()}. This line is redundant if the valve remains permanently plugged into the device. However, during testing it became apparent that if the valve was only plugged in after start-up, the control system would fail. 
+		
+	Secondly, the USB stick used to store the data is mounted with the helper function \textit{promptUSB()}. A number of helper functions with the prefix \textit{prompt} are used throughout the software. They in turn use the function \textit{prompt()} to get simple OK/Cancel input from the user. In this case, if the USB stick is not plugged in, the program will fail to mount it and call on the user to plug a USB stick in. Here, the user will be presented with the options OK and Cancel. If \textit{OK} is selected the program will try to mount the USB stick again. On \textit{Cancel}, the user will be asked if they wish to abort.
+
+	The function \textit{useStartProgram} continues with three more functions, that each prompt for further information from the user and set the parameters of the measurements to be taken. These are: \textit{promptChooseMuscle()}, \textit{promptInterpolatePressure()} and \textit{promtMeasurementCycles()}. 
+		
+	Firstly, with \textit{promptChooseMuscle()} the user is called upon to input the diameter size of the muscle in the test rig (5\milli\meter , 10\milli\meter , 20\milli\meter , 40\milli\meter). The selection adjusts which ADC input channel and voltage divider is used for the force measurement by sending the appropriate signals to the analogue switch (see Section \ref{sec:AnalogueInputs}).				
+		
+	Secondly, the function \textit{promptInterpolatePressure()} adds to the number of pressure points at which a force measurement is made. The user selects how many (up to a maximum of three) additional, equidistant pressure points should be added between each length point pair. The original and additional pressure points are all added to the \textit{vMeasurements} vector of the \textit{DeviceControl} object.  
+		
+		% explanation of vMeasurements. storage of all points and force measurements.
+		% should I include the code for this function (interp pressure)?
+
+	Finally, \textit{promptMeasurementCycles()} asks the user to select how many times they would like each force measurement to be taken, and stores this value in the variable \textit{measurementCyclesPerLength}. In this way, large datasets can be generated and averages calculated. 
+		
+	% the following is not correct...
+%	Finally, before the measurement commences, a file stream is opened to the data file on the USB stick. The pressure values that will be used for the measurement are written to the first line, to make reading the file later easier (see Section \ref{sec:DataStorage}). \todo{not correct, and the ref doesnt work}  
+
+	At this point all the options have been set and the measurements can begin. Broadly, this part of the software is structured as two loops, one nested in the other. The outer for-loop is responsible for cycling through the length measurements stored in the \textit{vLengths} vector. The loop warns the user to unfasten the bolts holding the muscle, before it pressurises it appropriately for the next length. Once at the right pressure, the user fastens the muscle again and the measurements at this length can take place.
+		
+	The inner while-loop cycles through the pressure points in the \textit{vMeasurements} vector, taking a force measurement at each. The measured force is also written to the \textit{vMeasurements} vector. Once all the pressure points at this length have been measured, the force data stored in the \textit{vMeasurements} vector is transferred to the next line of the data file on the USB stick. The vector is then cleared and filled with zeros, ensuring that pressure points that can't be measured at shorter lengths always record a force of zero. The program then returns to the beginning of the outer for-loop and the user manually unfastens the bolts of the rig in preparation for the move to the next length.
+		
+	An additional internal while-loop handles repeating measurements that were selected earlier with the \textit{measurementCyclesPerLength} variable. Further details on the PID-controller can be found in Section \ref{sec:PIDController}.
+	
+	The actual force measurement should only be made once the internal pressure of the muscle has reached the pressure set point. It is therefore important to ensure this happens irrespective of the controller gain settings and external factors, so even if the measured pressure swings around the set point multiple times or there is a drop in air pressure supply. A timer to wait for this to happen is not appropriate, as it's not known in advance how long this could take. In particular, it was noted during testing, that the supply of compressed air occasionally sank below the set point. This could happen for an indeterminate length of time, upto several minutes. An alternative could be to take a measurement when the measured pressure entered certain bounds of the set point. This, equally, had problems, in particular when a large overshoot caused the muscle pressure to enter the bounds and exit it again shortly afterwards. 
+	
+	The solution was a combination of the two approaches, so that a timer would begin to count down once the measured pressure was within 0.1\bbar of the set point. If the measured pressure left these bounds the timer would stop until the bounds were re-entered. Once the timer reached zero, a force measurement was taken. The advantage of this was particularly noticeable when the available pressure sank below the set point. In these instances the device would simply wait for the appropriate pressure to return.
+		
+	In this way the \textit{data.txt} file on the USB stick is filled with the force measurements that can subsequently be used to determine the static force characteristic of the muscle.
+		
+%	\textbf{\textit{useShutdown()}} starts the shutdown sequence of the device (Listing \ref{lst:useShutdown}). The user is first asked whether they are sure they wish to proceed. If their response is positive the following sequence is executed: the thread running the PI-controller is terminated; a message informs the user the device is shutting down; the CAN port is closed; the PRU timer is stopped; the file system caches are committed to disk and the device is shut down.
+				
+	
+
+		\subsubsection{I\textsuperscript{2}C and LCD}	
+		Header and source files (LCD.h and LCD.cpp) were developed to take care of the I\textsuperscript{2}C interface to the display and the commands for the LCD itself. The contents of the files is heavily based on a python library for Raspberry Pis with similar functionality \cite{LCD}. Additional functions that were added, improve the programmer's options in terms of which types can be placed on the display (eg int and float), and the position at which they can be displayed (left or right-hand side).	
+		
+		% http://blog.chrysocome.net/2013/03/programming-i2c.html      for initI2C()		
+		% http://hardware-libre.fr/2014/03/en-raspberry-pi-using-a-4x20-characters-display/     for everything else
+		
+		Following the boot process and the launch of the underlying device software, two things happen related to the display. First, access to the I\textsuperscript{2}C bus is opened and communication with the slave LCD device is initiated with its I\textsuperscript{2}C address. This occurs with the initI2C() function. Second, the initLCD() function initialises the LCD, a display that uses the Hitachi HD44780 protocol, in 4-bit interface mode \cite{HD44780}. At this stage the LCD is initialised and ready to display the menu or messages to the user.
+		
+%		\lstinputlisting[	firstline = 167, 
+%	                 		lastline = 169, 
+%	                 		firstnumber = 167,
+%	                 		label= lst:I2C,
+%	                 		caption = Accessing the I\textsuperscript{2}C bus and initialising the display]
+%							{/home/mkadrummond/workspace/Beaglebone/src/main.cpp} 	
+		
+		\subsubsection{Rotary Encoder and Button}
+		The C++ eQEP API written by Nathaniel Lewis \cite{eQEP_API}	was used as the interface to the eQEP driver. The main function creates an instance of the eQEP class based on the root path of the eQEP2 sysfs entry, and the operating mode of the hardware. In this case the eQEP hardware is run in absolute mode. This means its position starts at zero and is incremented or decremented by the encoder's movement, as opposed to being reset after a time interval. 	
+		
+		Following instantiation, the period at which the eQEP hardware polls the input is set with the \textit{set\_period()} function. Smooth operation of the encoder with the menu was achieved with a period of 10\milli\second (or 10,000,000\nano\second ).
+		
+							
+		% button!
+	
+	
+	
+\section{Test Measurements} \label{sec:TestMeasurements}
+	Two Festo PMAs were tested with the rig. While individual steps have been described previously, the process of testing a muscle is described in its entirety here:
+	\begin{itemize}
+		\item The device is connected to the force sensor, the pressure sensor, the valve and power. The connection to power should boot the device automatically.
+		\item The PMA to be tested is installed in the rig: one end attached to the force sensor of the rig, the other to the sliding plate. At this stage, the plate can be left to slide and shouldn't be fixed in place.
+		\item In the \textit{Set lengths} menu the lengths to be measured can be added. The rig currently only has fixed, predefined lengths to which the muscle can be bolted. The user should, therefore, increase the pressure until the first set of threaded holes are aligned with the holes on the sliding plate. Pressing the encoder button will store this pressure and allow the user to input the length of the muscle at these holes. The length measurement is currently done manually. This is repeated for the number of lengths desired.
+		\item On selecting \textit{Start program}, the user is asked to insert a USB stick, if this is not already in place. The user can then set the muscle diameter, the number of pressure points to add between each length, and the number of measurements per length to take. 
+		\item The device will then confirm that the muscle is free at one end (via the sliding plate), before adjusting the pressure to the first length. Here the user must manually fasten the sliding plate to the rest of the rig. Once the muscle is fastened and the user has confirmed they wish the measurement to proceed, the device will run through all the stored pressure points and record the exerted force at each. If multiple measurements were selected the device will repeat the measurements as necessary.
+		\item At the end of the measurements, the device will ask the user to unfasten the muscle. Again, this is done manually via the bolts holding the sliding plate. The device will then adjust the pressure to bring the muscle to the next length, before getting the user to confirm that they wish to proceed.
+		\item After the final measurement the device will prompt the user to unfasten the muscle one last time before returning to it to the ambient pressure.
+		\item The collected data is available in the \textit{data.txt} file on the USB stick. The first row contains all the pressure points that were used in the measurements, while the first column identifies the length. Thus, the force measurements are assigned to a specific length and pressure. 
+	\end{itemize}
+	
+	The two PMAs tested were Festo DMSP-20-300N muscles, i.e. with a diameter of 20\milli\meter . Six lengths were stored and a further three interpolated pressure points were added between each two lengths. Each measurement was repeated ten times.
+
+	The data collected (see Appendix \ref{app:Data}) was evaluated in MATLAB using a script written by Mirco Martens (see Appendix \ref{app:MATLAB}). This script averages force measurements of the same length and pressure, and plots these as a three dimensional map of the forces exerted at given muscle lengths and pressures. 
+	
+	\subsection{Results}
+	
+	The static force characteristic of the two PMAs tested, as measured with the developed test rig, are given in Figures \ref{fig:SFC1} and \ref{fig:SFC2}.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width = \textwidth]{SFC1.png}
+			\caption{Static force characteristic of PMA 1}		
+			\label{fig:SFC1}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width = \textwidth]{SFC2.png}
+			\caption{Static force characteristic of PMA 2}		
+			\label{fig:SFC2}
+		\end{figure}
+	
+
+\section{Discussion}
+From Figures \ref{fig:SFC1} and \ref{fig:SFC2} are good examples of the static force characteristics of Festo pneumatic muscles. At any given length the force exerted increases linearly with increasing internal pressure. As the muscle is made shorter, the increase in force with pressure remains linear but the gradient decreases.
+
+The visible kink from no measured force to a measured force is an artefact of the measurement method. This is primarily due to the need for tightening the muscle against the direction that the force will be applied. Further issues are related to the nature of the test rig; it is currently only possible to fix the muscle to predefined lengths. The first length, as all lengths, is achieved by applying a pressure to the muscle. The hysteresis and non-linearities at the muscles pressure extremes will result in inaccuracies in the force measurement. 
+
+Secondly, the data points recorded as zero Newton were, in fact, set to zero, while the adjacent measured data points are subject to the errors inherent in the system.
+
+Improvements to the test rig should include a way to set the PMA to any desired length. This would require a robust frame with a continuous length adjustment that can hold 6\kilo\newton\ (or the maximum force that a PMA would exert). One should be able to set this electronically. A pulse width modulation (PWM) output was foreseen for this, and designed into the device.
+
+% could also set the lengths by going from shortest to longest length. Then the rig will run through the lengths in that direction 
+% mutex of pressureSetPoint
+\section{Conclusion}
+The aim of this thesis was to develop a test rig for the automated measurement of the static force characteristic of Pneumtic Muscle Actuators. This was achieved with the help of a BeagleBone Black SBC, a four line LCD display, a compressed air valve, pressure and force sensors and the development of a bespoke printed circuit board (PCB). The PCB contained a power regulation sub-circuit, sensor signal conditioning hardware, and interfaces between the BeagleBone Black and the CAN bus, the LCD display, a rotary encoder, and push buttons.
+
+A discrete PID controller was programmed in the device to regulate the pressure in a Festo pneumatic muscle. A user interface and application for the automated measurement of exerted force at different pressures was built around the controller. The software was rounded off with means to store the data on a USB stick and have this evaluated using MATLAB on an external device. 
+
+Two Festo pneumatic muscles were tested with the device and their static force characteristics plotted. This demonstrated its suitability for rapidly generating large quantities of high resolution data for use in further applications, such as "sensorless" joints based around an antagonistic muscle pair.   
+
+\newpage
+
+\begin{thebibliography}{1}
+\bibitem{McKibben}
+	H.F. Schulte, "The characteristics of the McKibben artificial muscles". In \textit{The Application of External Power in Prosthetics and Orthotics}, vol. 874. Washington, DC: National Academy of Sciences, 1961, pp.94-115.
+
+\bibitem{Kelasidi}
+	E. Kelasidi, et al. "A survey on pneumatic muscle actuators modeling". In \textit{Journal of Energy and Power Engineering}, vol 6. 2011, pp. 1442-1452.
+	
+\bibitem{Davis}
+	S. Davis, D. G. Caldwell. "Braid Effects on Contractile Range and Friction Modeling in Pneumatic Muscle Actuators." In \textit{The International Journal of Robotics Research} vol. 25, no. 4, 2006, pp. 359-369
+
+\bibitem{Doumit}
+	M. Doumit, et al. "Analytical modeling and experimental validation of the braided pneumatic muscle." In \textit{IEEE transactions on robotics} vol. 25 no. 6, 2009, pp. 1282-1291.	
+	
+\bibitem{Boblan}
+	I. Boblan. "Modellbildung und Regelung eines fluidischen Muskelpaares." Diss. PhD., Fakultät III Prozesswissenschaften der Technischen Universität Berlin, 30, 2009.
+	
+\bibitem{Vitiello}
+	N. Vitiello, et al. "A sensorless torque control for Antagonistic Driven Compliant Joints." \textit{Mechatronics} vol. 20, no .3, 2010, pp. 355-367.
+	
+\bibitem{BBB_SRM}
+	G. Coley, \textit{BeagleBone Black System Reference Manual, Revision C.1}, May 2014
+	
+\bibitem{TI_LM2596}	
+  Texas Instruments, \textit{LM2596 Simple Switcher \textsuperscript{\textregistered} Power Converter 150kHz 3A Step-Down Voltage Regulator}, 2013	
+  
+\bibitem{VGS_AN88436}	
+  Vishay General Semiconductor, Appl. Note 88436, \textit{What is a Silicon Transient Voltage Suppressor and how does it work?}, 2007
+	
+\bibitem{AD_AN1368}	
+  Analog Devices, Appl. Note 1368, \textit{Ferrite Bead Demystified}, 2015
+  
+\bibitem{FS_SMBJ24}	
+  Fairchild Semiconductor,  \textit{SMBJ5V0(C)A - SMBJ170(C)A 600 Watt Transient Voltage Suppresssors}, SMBJ24A datasheet, 2003 
+  
+\bibitem{NXP_AN10441}	
+  NXP Semiconductors, Appl. Note 10441, \textit{Level shifting techniques in I\textsuperscript{2}C-bus design}, 2007
+  
+\bibitem{LinearCircuit}	
+  H. Zumbahlen, \textit{Linear Circuit Design Handbook}. Amsterdam, Netherlands: Elsevier Ltd, 2008
+  
+\bibitem{TechRefMan}	
+  Texas Instruments Technical Staff, \textit{AM335x ARM\textsuperscript{\textregistered} Cortex\texttrademark -A8 Microprocessors (MPUs) Technical Reference Manual}. Texas Instruments, Oct. 2011 [Revised Apr. 2013]
+  
+\bibitem{TI_SLLA270}	
+  Texas Instruments, Appl. Note SLLA270, \textit{Controller Area Network Physical Layer Requirements}, Jan. 2008
+
+\bibitem{CANbus_transceiver}	
+  Texas Instruments, \textit{SN65HVD23x 3.3-V CAN Bus Transceivers}, Mar. 2001 [Revised Jul. 2015] 	
+  
+\bibitem{ISO11898}	
+  \textit{Road vehicles -- Controller area network (CAN) -- Part 2: High-speed medium access unit}, ISO 11898-2:2003
+  
+\bibitem{TI_AM335x}	
+  Texas Instruments,  \textit{AM335x Sitara\texttrademark Processors}, AM335x datasheet, Oct. 2011 [Revised Apr. 2016]
+  
+\bibitem{ExploringBeagleBone}
+  D. Molloy, \textit{Exploring BeagleBone: Tools and Techniques for Building with Embedded Linux}, 2015
+  
+\bibitem{DeviceTree}
+  devicetree.org, "The Device Tree Specification," 2016 [Online]. Available: http://www.devicetree.org [Accessed: Nov. 07, 2016].   
+  
+\bibitem{capemgr}
+  eLinux.org, "Capemgr," Sep. 20, 2015 [Online]. Available: http://www.elinux.org/Capemgr [Accessed: Nov. 07, 2016]
+  
+\bibitem{POSIX}
+  \textit{Information technology -- Portable Operating System Interface (POSIX\textregistered )}, ISO/IEC/IEEE Standard 9945, 2009
+
+\bibitem{can-utils}
+  Oliver Hartkopp, "can-utils: SocketCAN user space applications," Oct. 10, 2016 [Online]. Available: https://github.com/linux-can/can-utils [Accessed: Nov. 14, 2016]
+  
+\bibitem{FestoCAN}
+	Festo, "Proportional directional control valves" Document number 00962321\_DBL\_001, Mar. 03 2016
+
+\bibitem{CANexample}
+  aqax, "SockenCAN example with read timeout," Jun. 07, 2013 [Online]. Available: https://lnguin.wordpress.com/ [Accessed: Nov. 14, 2016]
+  
+\bibitem{LCD}
+	Captain Stouf, "Raspberry Pi: using a 4x20 characters display," Mar. 20, 2014 [Online]. Available: http://hardware-libre.fr/2014/03/en-raspberry-pi-using-a-4x20-characters-display [Accessed: Mar. 24, 2016]
+	
+\bibitem{HD44780}	
+  Hitachi,  \textit{HD44780U (LCD-II), Dot Matrix Liquid Crystal Display Controller/Driver}, HD44780U datasheet, Sep. 1999
+   
+\bibitem{eQEP_API}
+  Nathaniel Lewis, "C++ eQEP API," May. 15, 2014 [Online]. Available: https://github.com/Teknoman117/beaglebot/tree/master/encoders/api/c\%2B\%2B [Accessed: Apr. 21, 2016]
+
+\end{thebibliography}
+
+\newpage
+
+\begin{appendices}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+\begin{landscape}
+\section{Circuit Schematic} 	\label{app:schematic}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.1]{Schematic1.png}
+			%\includegraphics[width=\textwidth]{Schematic1.png}
+			\label{fig:Schematic1}
+		\end{figure}	
+\end{landscape}
+\begin{landscape}
+		\begin{figure}
+			\centering
+			\includegraphics[scale=0.1]{Schematic2.png}	
+			\label{fig:Schematic2}
+		\end{figure}
+\end{landscape}
+
+\section{Board Layout}			\label{app:layout}
+	\subsection{Top}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\textwidth]{BoardTop.png}	
+			\label{fig:BoardTop}
+		\end{figure}		
+		
+		\newpage
+
+	\subsection{Bottom}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\textwidth]{BoardBottom.png}	
+			\label{fig:BoardBottom}
+		\end{figure}
+		
+		\clearpage
+		
+
+	\begin{landscape}
+	\section{Bill of Materials}		\label{app:bom}
+	\tiny
+	\setlength\LTcapwidth{\textwidth} % default: 4in (rather less than \textwidth...)
+	\setlength\LTleft{0pt}            % default: \parindent
+	\setlength\LTright{0pt}           % default: \fill
+%\begin{longtable}{lllllllllll}
+%\begin{longtable}{@{\extracolsep{\fill}}*{11}{l}}
+\begin{longtable}{p{2.5cm} p{0.5cm} p{0.8cm} p{2.7cm} p{2.2cm} p{5cm} p{2cm} p{2cm} p{1.5cm} p{2cm} p{2cm}}
+Sub-circuit                  & Part & Value  & Device                  & Package             & Description		& Manufacturer         & Manufacturer Product \# \\
+0. Power supply              & C00  & 100nF  & C-EUC0805               & C0805               & CAPACITOR (X7R, 50V general purpose ceramic cap)                                                                  & Yageo                & CC0805KRX7R9BB104       \\
+0. Power supply              & C01  & 220uF  & WCAP-ASLI\_10X10.5(DXL) & 4.4X1.9X4.3(BXCXA)  & WCAP-ASLI Aluminum Electrolytic Capacitors                                                                        & Würth Elektronik     & 865080657018            \\
+0. Power supply              & C02  & 220uF  & WCAP-ASLI\_10X10.5(DXL) & 4.4X1.9X4.3(BXCXA)  & WCAP-ASLI Aluminum Electrolytic Capacitors                                                                        & Würth Elektronik     & 865080657018            \\
+0. Power supply              & C03  & 10uF   & WCAP-ASLI\_4X5.5(DXL)   & 2.6X1.6X1(BXCXA)    & WCAP-ASLI Aluminum Electrolytic Capacitors                                                                        & Würth Elektronik     & 865080440002            \\
+0. Power supply              & C04  & 1000uF & WCAP-ASLI\_16X17(DXL)   & 6.5X3.5X6(BXCXA)    & WCAP-ASLI Aluminum Electrolytic Capacitors                                                                        & Würth Elektronik     & 865060663015            \\
+0. Power supply              & C05  & 100nF  & C-EUC0805               & C0805               & CAPACITOR (X7R, 50V general purpose ceramic cap)                                                                  & Yageo                & CC0805KRX7R9BB104       \\
+0. Power supply              & C06  & 100nF  & C-EUC0805               & C0805               & CAPACITOR (X7R, 50V general purpose ceramic cap)                                                                  & Yageo                & CC0805KRX7R9BB104       \\
+0. Power supply              & C07  & 10uF   & C-EUC1206               & C1206               & CAPACITOR (X5R, 16V general purpose ceramic cap)                                                                  & Kemet                & C1206C106K4PAC          \\
+0. Power supply              & C08  & 100nF  & C-EUC0805               & C0805               & CAPACITOR (X7R, 50V general purpose ceramic cap)                                                                  & Yageo                & CC0805KRX7R9BB104       \\
+0. Power supply              & C09  & n.i.   & C-EUC1206               & C1206               & CAPACITOR                                                                                                         &                      &                         \\
+0. Power supply              & D00  &        & RS3G-E3/57T             & DO-214AA            & Surface Mount Fast Switching Rectifier                                                                            & Vishay               & RS3G-E3/57T             \\
+0. Power supply              & D01  &        & SMBJ24A                 & DO-214AA            & 600 Watt Transient Voltage Suppressor                                                                             & Fairchild            & SMBJ24A                 \\
+0. Power supply              & D02  &        & SS34                    & DO-214AB            & Schottky Rectifier                                                                                                & Fairchild            & SS34                    \\
+0. Power supply              & J00  &        & PSS 254/2W              & MOLEX-1X2\_ANGLED   & CONNECTOR (Socket, angled, 2-pole)                                                        & Würth Elektronik     & 61900211021             \\
+0. Power supply              & JP0  &        & PIN HEADER - 1X2        & 1X02                & Pin header                                                                                                        &                      &                         \\
+0. Power supply              & K1   &        & 69410106102             & 694108000000        & DC/DC Power Jack, right angled, SMT, center pin $\oslash$2.0, with 4 Soldering Pads \& Peg & Würth Elektronik     & 694108000000            \\
+0. Power supply              & L1   & 100uH  & SRR1208-101YL           & SRR1208             & Shielded High Power Inductor                                                                                      & Bourns               &                         \\
+0. Power supply              & L2   & 220uH  & SRR1208-221KL           & SRR1208             & Shielded High Power Inductor                                                                                      & Bourns               & SRR1208-221KL           \\
+0. Power supply              & L3   &        & WE-CBF\_0805(WB/HS)     & WE-CBF\_0805(W=3) & EMI Suppression Ferrite Bead                                                                                      & Würth Elektronik     & 742792043               \\
+0. Power supply              & R00  & 270\ohm   & HP05W3                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & HP05W3F2700T5E          \\
+0. Power supply              & R01  & 0\ohm     & ERJ-6                   & R0805               & Anti-Surge Thick Film Chip Resistors                                                                              & Panasonic            & ERJ-6GEY0R00V           \\
+0. Power supply              & U00  &        & LM2596S                 & TO263-5             & SIMPLE SWITCHER\textregistered Power Converter 150 kHz 3A Step-Down Voltage Regulator                                           & Texas Instruments    &                         \\
+1. Buttons                   & C10  & 1uF    & C-EUC1206               & C1206               & CAPACITOR (X7R, 16V general purpose ceramic cap)                                                                  & Yageo                & CC1206JKX7R7BB105       \\
+1. Buttons                   & C11  & 1uF    & C-EUC1206               & C1206               & CAPACITOR (X7R, 16V general purpose ceramic cap)                                                                  & Yageo                & CC1206JKX7R7BB105       \\
+1. Buttons                   & C12  & 1uF    & C-EUC1206               & C1206               & CAPACITOR (X7R, 16V general purpose ceramic cap)                                                                  & Yageo                & CC1206JKX7R7BB105       \\
+1. Buttons                   & C13  & 1uF    & C-EUC1206               & C1206               & CAPACITOR (X7R, 16V general purpose ceramic cap)                                                                  & Yageo                & CC1206JKX7R7BB105       \\
+1. Buttons                   & C14  & 100nF  & C-EUC0805               & C0805               & CAPACITOR (X7R, 50V general purpose ceramic cap)                                                                  & Yageo                & CC0805KRX7R9BB104       \\
+1. Buttons                   & J10  &        & PSS 254/2G              & MOLEX-1X2           & CONNECTOR (Socket, straight, 2-pole)                                                          & Würth Elektronik     & 61900211121             \\
+1. Buttons                   & J11  &        & PSS 254/2G              & MOLEX-1X2           & CONNECTOR (Socket, straight, 2-pole)                                                          & Würth Elektronik     & 61900211121             \\
+1. Buttons                   & J12  &        & PSS 254/2G              & MOLEX-1X2           & CONNECTOR (Socket, straight, 2-pole)                                                          & Würth Elektronik     & 61900211121             \\
+1. Buttons                   & R10  & 10k\ohm   & CR0805                  & R0805               & Chip Resistors                                                                                                    & Panasonic            & CR0805-FX-1002ELF       \\
+1. Buttons                   & R11  & 1k\ohm    & HP05W3                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & HP05W3F1001T5E          \\
+1. Buttons                   & R12  & 10k\ohm   & CR0805                  & R0805               & Chip Resistors                                                                                                    & Panasonic            & CR0805-FX-1002ELF       \\
+1. Buttons                   & R13  & 1k\ohm    & HP05W3                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & HP05W3F1001T5E          \\
+1. Buttons                   & R14  & 10k\ohm   & CR0805                  & R0805               & Chip Resistors                                                                                                    & Panasonic            & CR0805-FX-1002ELF       \\
+1. Buttons                   & R15  & 1k\ohm    & HP05W3                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & HP05W3F1001T5E          \\
+1. Buttons                   & R16  & 10k\ohm   & CR0805                  & R0805               & Chip Resistors                                                                                                    & Panasonic            & CR0805-FX-1002ELF       \\
+1. Buttons                   & R17  & 1k\ohm    & HP05W3                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & HP05W3F1001T5E          \\
+1. Buttons                   & U10  &        & SN74HC14DR              & SOIC-14             & HEX SCHMITT-TRIGGER INVERTERS                                                                                     & Texas Instruments    & SN74HC14DR              \\
+1. Buttons                   & U11  &        & 1EN11-VSM1BQ15          & EN11                & Rotary Encoder, 1EN11-VSM1BQ15                                                                                    & TT Electronics       & 9302520100              \\
+2. LEDs                      & LED1 &        & CHIP-LED                & 805                 & SMD-LED 0805 Blue 100 mcd 120$\degree$  20mA 3.3V                                             & Kingbright           & KP-2012QBC-D            \\
+2. LEDs                      & LED2 &        & CHIP-LED                & 805                 & SMD-LED 0805 Blue 100 mcd 120$\degree$  20mA 3.3V  & Kingbright           & KP-2012QBC-D            \\
+2. LEDs                      & LED3 &        & CHIP-LED                & 805                 & SMD-LED 0805 Blue 100 mcd 120$\degree$  20mA 3.3V 	& Kingbright           & KP-2012QBC-D            \\
+2. LEDs                      & LED4 &        & CHIP-LED                & 805                 & SMD-LED 0805 Blue 100 mcd 120$\degree$ 20mA 3.3V 	& Kingbright           & KP-2012QBC-D            \\
+2. LEDs                      & Q20  &        & 2N7002PW                & SOT323              & 60 V, 310 mA N-channel Trench MOSFET                                                                              & NXP                  & 2N7002PW,115            \\
+2. LEDs                      & Q21  &        & 2N7002PW                & SOT323              & 61 V, 310 mA N-channel Trench MOSFET                                                                              & NXP                  & 2N7002PW,115            \\
+2. LEDs                      & Q22  &        & 2N7002PW                & SOT323              & 62 V, 310 mA N-channel Trench MOSFET                                                                              & NXP                  & 2N7002PW,115            \\
+2. LEDs                      & R20  & 100k\ohm  & ERJ-P06                 & R0805               & Anti-Surge Thick Film Chip Resistors                                                                              &                      & ERJ-P06J104V            \\
+2. LEDs                      & R21  & 270\ohm   & HP05W3                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & HP05W3F2700T5E          \\
+2. LEDs                      & R22  & 100k\ohm  & ERJ-P06                 & R0805               & Anti-Surge Thick Film Chip Resistors                                                                              & Panasonic            & ERJ-P06J104V            \\
+2. LEDs                      & R23  & 270\ohm   & HP05W3                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & HP05W3F2700T5E          \\
+2. LEDs                      & R24  & 100k\ohm  & ERJ-P06                 & R0805               & Anti-Surge Thick Film Chip Resistors                                                                              & Panasonic            & ERJ-P06J104V            \\
+2. LEDs                      & R25  & 270\ohm   & HP05W3                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & HP05W3F2700T5E          \\
+3. I2C, level shifter \& LCD & C30  & 100nF  & C-EUC0805               & C0805               & CAPACITOR (X7R, 50V general purpose ceramic cap)                                                                  & Yageo                & CC0805KRX7R9BB104       \\
+3. I2C, level shifter \& LCD & C31  & 100nF  & C-EUC0805               & C0805               & CAPACITOR (X7R, 50V general purpose ceramic cap)                                                                  & Yageo                & CC0805KRX7R9BB104       \\
+3. I2C, level shifter \& LCD & C32  & 10uF   & C-EUC1206               & C1206               & CAPACITOR (X7R, 16V general purpose ceramic cap)                                                                  & Kemet                & C1206C106K4PAC          \\
+3. I2C, level shifter \& LCD & C33  & 100nF  & C-EUC0805               & C0805               & CAPACITOR (X7R, 50V general purpose ceramic cap)                                                                  & Yageo                & CC0805KRX7R9BB104       \\
+3. I2C, level shifter \& LCD & C34  & n.i.   & C-EUC0805               & C0805               & CAPACITOR                                                                                                         &                      &                         \\
+3. I2C, level shifter \& LCD & C35  & n.i.   & C-EUC0805               & C0805               & CAPACITOR                                                                                                         &                      &                         \\
+3. I2C, level shifter \& LCD & J3   &        & M05X2SHD                & 2X5-SHROUDED        & CONNECTOR (10 pole box header 2,54mm)         & BKL Electronic       & 10120554                \\
+3. I2C, level shifter \& LCD & Q30  &        & 2N7002PW                & SOT323              & 63 V, 310 mA N-channel Trench MOSFET                                                                              & NXP                  & 2N7002PW,115            \\
+3. I2C, level shifter \& LCD & Q31  &        & 2N7002PW                & SOT323              & 64 V, 310 mA N-channel Trench MOSFET                                                                              & NXP                  & 2N7002PW,115            \\
+3. I2C, level shifter \& LCD & R30  & 10k\ohm   & CR0805                  & R0805               & Chip Resistors                                                                                                    & Panasonic            & CR0805-FX-1002ELF       \\
+3. I2C, level shifter \& LCD & R31  & 10k\ohm   & CR0805                  & R0805               & Chip Resistors                                                                                                    & Panasonic            & CR0805-FX-1002ELF       \\
+3. I2C, level shifter \& LCD & R32  & 10k\ohm   & CR0805                  & R0805               & Chip Resistors                                                                                                    & Panasonic            & CR0805-FX-1002ELF       \\
+3. I2C, level shifter \& LCD & R33  & 10k\ohm   & CR0805                  & R0805               & Chip Resistors                                                                                                    & Panasonic            & CR0805-FX-1002ELF       \\
+3. I2C, level shifter \& LCD & R34  & 100\ohm   & 0805S8                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & 0805S8F1000T5E          \\
+3. I2C, level shifter \& LCD & R35  & 100\ohm   & 0805S8                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & 0805S8F1000T5E          \\
+4. CAN-Bus                   & C40  & 100nF  & C-EUC0805               & C0805               & CAPACITOR (X7R, 50V general purpose ceramic cap)                                                                  & Yageo                & CC0805KRX7R9BB104       \\
+4. CAN-Bus                   & C41  & 10uF   & C-EUC1206               & C1206               & CAPACITOR (X7R, 16V general purpose ceramic cap)                                                                  & Kemet                & C1206C106K4PAC          \\
+4. CAN-Bus                   & C42  & 100nF  & C-EUC0805               & C0805               & CAPACITOR (X7R, 50V general purpose ceramic cap)                                                                  & Yageo                & CC0805KRX7R9BB104       \\
+4. CAN-Bus                   & J4   &        & BINDER\_M9\_ANGLED      & BINDER\_M9\_ANGLED  & CONNECTOR                                                                                                         &                      & 09-0416-55-05           \\
+4. CAN-Bus                   & R40  & 1k\ohm    & HP05W3                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & HP05W3F1001T5E          \\
+4. CAN-Bus                   & R41  & 1k\ohm    & HP05W3                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & HP05W3F1001T5E          \\
+4. CAN-Bus                   & R42  & 100k\ohm  & ERJ-P06                 & R0805               & Anti-Surge Thick Film Chip Resistors                                                                              & Panasonic            & ERJ-P06J104V            \\
+4. CAN-Bus                   & R43  & 120\ohm   & HP05W3                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & HP05W3J0121T5E          \\
+4. CAN-Bus                   & U40  &        & SN65HVD232DR            & SOIC-8              & 3.3-V CAN Bus Transceivers                                                                                        & Texas Instruments    & SN65HVD232DR            \\
+4. CAN-Bus                   & U41  &        & PESD2CAN                & SOT23               & CAN bus ESD protection diode                                                                                      & NXP                  & PESD2CAN,215            \\
+5. Analogue inputs           & C50  & 10uF   & C-EUC1206               & C1206               & CAPACITOR (X7R, 16V general purpose ceramic cap)                                                                  & Kemet                & C1206C106K4PAC          \\
+5. Analogue inputs           & C51  & 100nF  & C-EUC0805               & C0805               & CAPACITOR (X7R, 50V general purpose ceramic cap)                                                                  & Yageo                & CC0805KRX7R9BB104       \\
+5. Analogue inputs           & C52  & 1uF    & C-EUC1206               & C1206               & CAPACITOR (X7R, 16V general purpose ceramic cap)                                                                  & Yageo                & CC1206JKX7R7BB105       \\
+5. Analogue inputs           & C53  & 100nF  & C-EUC0805               & C0805               & CAPACITOR (X7R, 50V general purpose ceramic cap)                                                                  & Yageo                & CC0805KRX7R9BB104       \\
+5. Analogue inputs           & C54  & 10uF   & C-EUC1206               & C1206               & CAPACITOR (X7R, 16V general purpose ceramic cap)                                                                  & Kemet                & C1206C106K4PAC          \\
+5. Analogue inputs           & C55  & 100nF  & C-EUC0805               & C0805               & CAPACITOR (X7R, 50V general purpose ceramic cap)                                                                  & Yageo                & CC0805KRX7R9BB104       \\
+5. Analogue inputs           & C56  & 100nF  & C-EUC0805               & C0805               & CAPACITOR (X7R, 50V general purpose ceramic cap)                                                                  & Yageo                & CC0805KRX7R9BB104       \\
+5. Analogue inputs           & C57  & n.i.   & C-EUC0805               & C0805               & CAPACITOR                                                                                                         &                      &                         \\
+5. Analogue inputs           & C58  & n.i.   & C-EUC0805               & C0805               & CAPACITOR                                                                                                         &                      &                         \\
+5. Analogue inputs           & C59  & n.i.   & C-EUC0805               & C0805               & CAPACITOR                                                                                                         &                      &                         \\
+5. Analogue inputs           & C60  & n.i.   & C-EUC0805               & C0805               & CAPACITOR                                                                                                         &                      &                         \\
+5. Analogue inputs           & C61  & n.i.   & C-EUC0805               & C0805               & CAPACITOR                                                                                                         &                      &                         \\
+5. Analogue inputs           & C62  & n.i.   & C-EUC0805               & C0805               & CAPACITOR                                                                                                         &                      &                         \\
+5. Analogue inputs           & C63  & n.i.   & C-EUC0805               & C0805               & CAPACITOR                                                                                                         &                      &                         \\
+5. Analogue inputs           & C64  & n.i.   & C-EUC0805               & C0805               & CAPACITOR                                                                                                         &                      &                         \\
+5. Analogue inputs           & C65  & 100nF  & C-EUC0805               & C0805               & CAPACITOR (X7R, 50V general purpose ceramic cap)                                                                  & Yageo                & CC0805KRX7R9BB104       \\
+5. Analogue inputs           & C66  & 100nF  & C-EUC0805               & C0805               & CAPACITOR (X7R, 50V general purpose ceramic cap)                                                                  & Yageo                & CC0805KRX7R9BB104       \\
+5. Analogue inputs           & J50  &        & PSS 254/5W              & MOLEX-1X5\_ANGLED   & CONNECTOR (Socket, angled, 5-pole)                                                       & Würth Elektronik     & 61900511021             \\
+5. Analogue inputs           & J51  &        & PSS 254/3W              & MOLEX-1X3\_ANGLED   & CONNECTOR (Socket, angled, 3-pole)                                                       & Würth Elektronik     & 61900311021             \\
+5. Analogue inputs           & R500 & 75k\ohm   & R-EU\_R0805             & R0805               & RESISTOR                                                                                                          & Panasonic            & ERA-6APB753V            \\
+5. Analogue inputs           & R501 & 16k\ohm   & R-EU\_R0805             & R0805               & RESISTOR                                                                                                          & Panasonic            & ERA-6AEB163V            \\
+5. Analogue inputs           & R502 & 10k\ohm   & R-EU\_R0805             & R0805               & RESISTOR                                                                                                          & Panasonic            & ERA-6YEB103V            \\
+5. Analogue inputs           & R503 & 10k\ohm   & R-EU\_R0805             & R0805               & RESISTOR                                                                                                          & Panasonic            & ERA-6YEB103V            \\
+5. Analogue inputs           & R510 & 71,5k\ohm & R-EU\_R0805             & R0805               & RESISTOR                                                                                                          & Panasonic            & ERA-6AEB7152V           \\
+5. Analogue inputs           & R511 & 6.2k\ohm  & R-EU\_R0805             & R0805               & RESISTOR                                                                                                          & Panasonic            & ERA-6AEB622V            \\
+5. Analogue inputs           & R512 & 33.2k\ohm & R-EU\_R0805             & R0805               & RESISTOR                                                                                                          & Panasonic            & ERA-6AEB3322V           \\
+5. Analogue inputs           & R513 & 0\ohm     & R-EU\_R0805             & R0805               & RESISTOR                                                                                                          & Panasonic            & ERJ-6GEY0R00V           \\
+5. Analogue inputs           & R520 & 47.5k\ohm & R-EU\_R0805             & R0805               & RESISTOR                                                                                                          & Microtech            & CMF080547k50.110        \\
+5. Analogue inputs           & R521 & 0\ohm     & R-EU\_R0805             & R0805               & RESISTOR                                                                                                          & Panasonic            & ERJ-6GEY0R00V           \\
+5. Analogue inputs           & R522 & 47k\ohm   & R-EU\_R0805             & R0805               & RESISTOR                                                                                                          & Panasonic            & ERA-6AEB473V            \\
+5. Analogue inputs           & R523 & 10k\ohm   & R-EU\_R0805             & R0805               & RESISTOR                                                                                                          & Panasonic            & ERA-6YEB103V            \\
+5. Analogue inputs           & R530 & 5\ohm     & ERJ-P14                 & R1210               & Anti-Surge Thick Film Chip Resistors                                                                              & Panasonic            & ERJ-P14J4R7U            \\
+5. Analogue inputs           & R531 & 5\ohm     & ERJ-P14                 & R1210               & Anti-Surge Thick Film Chip Resistors                                                                              & Panasonic            & ERJ-P14J4R7U            \\
+5. Analogue inputs           & R532 & 90.9k\ohm & R-EU\_R0805             & R0805               & RESISTOR                                                                                                          & Panasonic            & ERJ-1GEF9092C           \\
+5. Analogue inputs           & R533 & 51k\ohm   & R-EU\_R0805             & R0805               & RESISTOR                                                                                                          & Panasonic            & ERA-6APB513V            \\
+5. Analogue inputs           & R534 & 1k\ohm    & HP05W3                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & HP05W3F1001T5E          \\
+5. Analogue inputs           & R535 & 1k\ohm    & HP05W3                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & HP05W3F1001T5E          \\
+5. Analogue inputs           & R536 & 1k\ohm    & HP05W3                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & HP05W3F1001T5E          \\
+5. Analogue inputs           & R537 & 1k\ohm    & HP05W3                  & R0805               & Thick Film Chip Resistors                                                                                         & Royalohm             & HP05W3F1001T5E          \\
+5. Analogue inputs           & U50  &        & MCP6001T-I/OT           & SOT23-5             & Single low-power OPAMP                                                                                            & Microchip Tech. & MCP6001T-I/OT           \\
+5. Analogue inputs           & U51  &        & MCP6004-I/SL            & SOIC-14             & Quad low-power OPAMP                                                                                              & Microchip Tech. & MCP6004-I/SL            \\
+5. Analogue inputs           & U52  &        & MAX4662                 & SSOP16              & 2.5W, Quad, SPST, CMOS Analog Switches                                                                            & Maxim Integrated     &                        
+\end{longtable}
+\end{landscape}
+
+\section{Example Device Tree Overlay} \label{app:DTS}
+
+		\lstinputlisting[	%firstline = 167, 
+	                 		%lastline = 169, 
+	                 		%firstnumber = 167,
+	                 		label= lst:GPIOs,
+	                 		caption = GPIO.dts]
+							{GPIOs.dts} 	
+
+\section{Software API}					\label{app:api}
+	\footnotesize
+	
+	\input{/home/mkadrummond/workspace/Beaglebone/latex/classMenu.tex}	
+	\input{/home/mkadrummond/workspace/Beaglebone/latex/classMenuNode.tex}		
+	\input{/home/mkadrummond/workspace/Beaglebone/latex/classDeviceControl.tex}	
+	 
+\section{Test Measurement Data}	\label{app:Data}
+\subsection{Data.txt of muscle 1}
+\begin{table}[H]
+\centering
+\tiny
+%\caption{Data.txt}
+%\label{my-label}
+\tabcolsep=0.085cm
+\begin{tabular}{lllllllllllllllllllllll}
+& 0.35 & 0.6 & 0.85 & 1.1 & 1.35 & 1.4625 & 1.575 & 1.6875 & 1.8 & 1.975 & 2.15 & 2.325 & 2.5 & 2.8125 & 3.125 & 3.4375 & 3.75 & 4.5 & 5.25 & 6    & 6.75 &      \\
+296: & 94  & 132  & 192 & 250  & 317    & 356   & 383    & 401 & 436   & 488  & 519   & 564 & 614    & 707   & 794    & 864  & 951 & 1132 & 1343 & 1544 & 1723 &  \\
+296: & 77  & 134  & 195 & 259  & 314    & 349   & 371    & 407 & 426   & 483  & 532   & 576 & 624    & 695   & 783    & 859  & 943 & 1140 & 1341 & 1534 & 1714 &  \\
+296: & 72  & 127  & 194 & 260  & 328    & 348   & 378    & 408 & 438   & 483  & 520   & 574 & 618    & 705   & 781    & 857  & 947 & 1132 & 1340 & 1530 & 1727 &  \\
+296: & 75  & 128  & 184 & 255  & 325    & 354   & 373    & 412 & 427   & 480  & 514   & 558 & 619    & 690   & 792    & 851  & 936 & 1147 & 1340 & 1521 & 1724 &  \\
+296: & 80  & 132  & 189 & 253  & 325    & 343   & 375    & 405 & 422   & 481  & 523   & 570 & 617    & 700   & 788    & 867  & 938 & 1141 & 1342 & 1531 & 1722 &  \\
+296: & 72  & 128  & 189 & 250  & 301    & 344   & 374    & 402 & 434   & 479  & 523   & 580 & 615    & 688   & 780    & 861  & 946 & 1147 & 1342 & 1541 & 1730 &  \\
+296: & 69  & 129  & 177 & 244  & 315    & 345   & 373    & 403 & 430   & 476  & 521   & 570 & 622    & 697   & 779    & 866  & 950 & 1132 & 1347 & 1535 & 1728 &  \\
+296: & 71  & 129  & 173 & 256  & 314    & 348   & 373    & 409 & 425   & 463  & 509   & 569 & 622    & 698   & 771    & 861  & 947 & 1134 & 1346 & 1534 & 1735 &  \\
+296: & 57  & 119  & 189 & 250  & 303    & 341   & 368    & 400 & 431   & 466  & 521   & 568 & 605    & 697   & 779    & 862  & 945 & 1142 & 1341 & 1532 & 1740 &  \\
+296: & 70  & 128  & 189 & 250  & 313    & 342   & 371    & 400 & 424   & 463  & 520   & 567 & 615    & 695   & 778    & 868  & 943 & 1142 & 1344 & 1536 & 1729 &  \\
+282: & 0   & 0    & 0   & 0    & 85     & 110   & 120    & 156 & 181   & 222  & 255   & 292 & 335    & 407   & 470    & 527  & 614 & 769  & 935  & 1095 & 1262 &  \\
+282: & 0   & 0    & 0   & 0    & 97     & 111   & 142    & 162 & 188   & 224  & 256   & 293 & 338    & 406   & 482    & 551  & 610 & 772  & 925  & 1099 & 1256 &  \\
+282: & 0   & 0    & 0   & 0    & 97     & 124   & 134    & 177 & 192   & 239  & 256   & 307 & 333    & 409   & 477    & 544  & 616 & 776  & 938  & 1099 & 1250 &  \\
+282: & 0   & 0    & 0   & 0    & 99     & 111   & 148    & 170 & 204   & 232  & 261   & 307 & 338    & 398   & 473    & 538  & 620 & 765  & 932  & 1098 & 1261 &  \\
+282: & 0   & 0    & 0   & 0    & 102    & 116   & 151    & 158 & 196   & 236  & 280   & 307 & 353    & 406   & 482    & 549  & 610 & 790  & 928  & 1106 & 1261 &  \\
+282: & 0   & 0    & 0   & 0    & 104    & 133   & 147    & 175 & 196   & 226  & 271   & 296 & 349    & 416   & 493    & 552  & 627 & 768  & 953  & 1106 & 1255 &  \\
+282: & 0   & 0    & 0   & 0    & 107    & 130   & 151    & 186 & 200   & 236  & 273   & 311 & 349    & 403   & 480    & 540  & 629 & 782  & 942  & 1107 & 1282 &  \\
+282: & 0   & 0    & 0   & 0    & 106    & 130   & 155    & 164 & 195   & 234  & 260   & 314 & 356    & 418   & 475    & 552  & 622 & 788  & 946  & 1109 & 1265 &  \\
+282: & 0   & 0    & 0   & 0    & 108    & 119   & 145    & 182 & 202   & 241  & 276   & 316 & 351    & 418   & 488    & 541  & 623 & 780  & 947  & 1110 & 1278 &  \\
+282: & 0   & 0    & 0   & 0    & 101    & 133   & 142    & 179 & 189   & 226  & 270   & 304 & 351    & 422   & 490    & 549  & 624 & 780  & 935  & 1117 & 1279 &  \\
+267: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 85    & 99   & 144   & 176 & 210    & 256   & 301    & 352  & 420 & 549  & 674  & 802  & 921  &  \\
+267: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 83    & 107  & 149   & 179 & 210    & 255   & 302    & 364  & 415 & 552  & 686  & 807  & 930  &  \\
+267: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 88    & 129  & 162   & 186 & 202    & 265   & 306    & 365  & 415 & 558  & 674  & 813  & 935  &  \\
+267: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 97    & 126  & 156   & 195 & 222    & 268   & 311    & 375  & 420 & 543  & 686  & 807  & 937  &  \\
+267: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 95    & 127  & 162   & 194 & 227    & 277   & 310    & 377  & 439 & 559  & 686  & 803  & 927  &  \\
+267: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 98    & 128  & 145   & 197 & 217    & 265   & 324    & 379  & 430 & 559  & 687  & 815  & 941  &  \\
+267: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 100   & 136  & 166   & 180 & 219    & 267   & 318    & 378  & 417 & 562  & 675  & 802  & 939  &  \\
+267: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 94    & 122  & 167   & 188 & 219    & 263   & 331    & 381  & 419 & 562  & 675  & 807  & 943  &  \\
+267: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 112   & 130  & 151   & 188 & 220    & 274   & 337    & 382  & 433 & 563  & 690  & 823  & 943  &  \\
+267: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 96    & 121  & 162   & 192 & 222    & 260   & 318    & 369  & 420 & 564  & 693  & 817  & 939  &  \\
+250: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 93     & 136   & 176    & 214  & 262 & 350  & 453  & 541  & 632  &  \\
+250: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 104    & 139   & 178    & 220  & 258 & 356  & 455  & 542  & 646  &  \\
+250: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 108    & 141   & 180    & 207  & 260 & 355  & 450  & 544  & 636  &  \\
+250: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 94     & 144   & 181    & 226  & 263 & 357  & 459  & 532  & 634  &  \\
+250: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 91     & 145   & 190    & 224  & 249 & 346  & 452  & 545  & 638  &  \\
+250: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 109    & 144   & 186    & 226  & 251 & 347  & 454  & 554  & 642  &  \\
+250: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 107    & 146   & 187    & 235  & 265 & 364  & 456  & 548  & 638  &  \\
+250: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 115    & 149   & 191    & 229  & 268 & 362  & 458  & 553  & 645  &  \\
+250: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 101    & 156   & 176    & 221  & 270 & 363  & 458  & 553  & 631  &  \\
+250: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 109    & 159   & 192    & 216  & 261 & 352  & 459  & 554  & 647  &  \\
+237: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 97  & 161  & 209  & 274  & 343  &  \\
+237: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 86  & 151  & 209  & 286  & 350  &  \\
+237: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 101 & 163  & 225  & 273  & 357  &  \\
+237: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 109 & 171  & 233  & 279  & 334  &  \\
+237: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 91  & 151  & 227  & 289  & 348  &  \\
+237: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 97  & 170  & 238  & 293  & 355  &  \\
+237: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 91  & 169  & 221  & 281  & 359  &  \\
+237: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 92  & 169  & 220  & 295  & 357  &  \\
+237: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 110 & 169  & 227  & 296  & 355  &  \\
+237: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 107 & 162  & 219  & 296  & 356  &  \\
+222: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0   & 0    & 0    & 0    & 94   &  \\
+222: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0   & 0    & 0    & 0    & 95   &  \\
+222: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0   & 0    & 0    & 0    & 94   &  \\
+222: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0   & 0    & 0    & 0    & 95   &  \\
+222: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0   & 0    & 0    & 0    & 96   &  \\
+222: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0   & 0    & 0    & 0    & 97   &  \\
+222: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0   & 0    & 0    & 0    & 87   &  \\
+222: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0   & 0    & 0    & 0    & 107  &  \\
+222: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0   & 0    & 0    & 0    & 84   &  \\
+222: & 0   & 0    & 0   & 0    & 0      & 0     & 0      & 0   & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0   & 0    & 0    & 0    & 89   & 
+\end{tabular}
+\end{table}
+
+\subsection{Data.txt of muscle 2}
+
+\begin{table}[H]
+\centering
+\tiny
+%\caption{My caption}
+%\label{my-label}
+\tabcolsep=0.085cm
+\begin{tabular}{lllllllllllllllllllllll}
+& 0.3  & 0.575 & 0.85 & 1.125 & 1.4 & 1.5375 & 1.675 & 1.8125 & 1.95 & 2.125 & 2.3 & 2.475 & 2.65 & 2.95 & 3.25 & 3.55 & 3.85 & 4.575 & 5.3  & 6.025 & 6.75 &      \\
+296: & 51    & 135  & 178   & 250 & 317    & 366   & 393    & 437  & 471   & 515 & 562   & 609  & 655  & 732  & 811  & 887  & 959   & 1149 & 1347  & 1534 & 1731 &  \\
+296: & 54    & 116  & 191   & 238 & 304    & 352   & 394    & 418  & 469   & 497 & 553   & 602  & 644  & 730  & 788  & 882  & 959   & 1152 & 1350  & 1531 & 1720 &  \\
+296: & 57    & 114  & 181   & 249 & 319    & 358   & 393    & 423  & 460   & 506 & 551   & 599  & 641  & 717  & 800  & 872  & 949   & 1150 & 1343  & 1529 & 1711 &  \\
+296: & 40    & 103  & 173   & 233 & 318    & 349   & 380    & 433  & 451   & 499 & 543   & 600  & 638  & 723  & 808  & 868  & 957   & 1159 & 1340  & 1522 & 1708 &  \\
+296: & 54    & 107  & 185   & 247 & 313    & 356   & 390    & 433  & 462   & 506 & 551   & 601  & 644  & 715  & 799  & 878  & 968   & 1141 & 1343  & 1531 & 1726 &  \\
+296: & 52    & 105  & 180   & 239 & 323    & 357   & 383    & 424  & 453   & 498 & 543   & 601  & 634  & 720  & 800  & 866  & 958   & 1135 & 1328  & 1529 & 1730 &  \\
+296: & 41    & 116  & 180   & 257 & 303    & 361   & 390    & 414  & 468   & 496 & 561   & 596  & 642  & 713  & 811  & 877  & 968   & 1149 & 1343  & 1525 & 1717 &  \\
+296: & 49    & 113  & 166   & 247 & 315    & 362   & 390    & 419  & 446   & 513 & 549   & 599  & 641  & 722  & 802  & 885  & 948   & 1134 & 1335  & 1535 & 1717 &  \\
+296: & 39    & 103  & 175   & 249 & 317    & 352   & 386    & 433  & 447   & 514 & 550   & 600  & 634  & 725  & 801  & 887  & 960   & 1160 & 1341  & 1529 & 1713 &  \\
+280: & 0     & 0    & 0     & 0   & 84     & 99    & 142    & 164  & 198   & 231 & 278   & 320  & 362  & 416  & 489  & 545  & 621   & 776  & 925   & 1085 & 1250 &  \\
+280: & 0     & 0    & 0     & 0   & 97     & 126   & 155    & 195  & 203   & 243 & 277   & 325  & 364  & 430  & 493  & 559  & 623   & 780  & 924   & 1092 & 1244 &  \\
+280: & 0     & 0    & 0     & 0   & 87     & 121   & 167    & 189  & 216   & 256 & 277   & 331  & 374  & 441  & 494  & 554  & 630   & 787  & 940   & 1095 & 1235 &  \\
+280: & 0     & 0    & 0     & 0   & 112    & 119   & 151    & 197  & 220   & 254 & 279   & 331  & 368  & 444  & 499  & 563  & 627   & 784  & 951   & 1101 & 1251 &  \\
+280: & 0     & 0    & 0     & 0   & 104    & 133   & 170    & 191  & 229   & 249 & 287   & 333  & 371  & 435  & 491  & 558  & 622   & 778  & 943   & 1100 & 1254 &  \\
+280: & 0     & 0    & 0     & 0   & 110    & 133   & 168    & 196  & 222   & 246 & 306   & 342  & 364  & 437  & 507  & 566  & 630   & 780  & 945   & 1099 & 1253 &  \\
+280: & 0     & 0    & 0     & 0   & 107    & 137   & 152    & 182  & 225   & 260 & 303   & 338  & 382  & 443  & 503  & 567  & 632   & 790  & 953   & 1097 & 1267 &  \\
+280: & 0     & 0    & 0     & 0   & 101    & 139   & 164    & 198  & 212   & 264 & 311   & 338  & 379  & 429  & 506  & 570  & 639   & 792  & 939   & 1110 & 1262 &  \\
+280: & 0     & 0    & 0     & 0   & 109    & 141   & 164    & 186  & 227   & 270 & 296   & 330  & 376  & 436  & 498  & 572  & 644   & 788  & 947   & 1095 & 1256 &  \\
+265: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 103   & 125 & 150   & 180  & 213  & 257  & 303  & 357  & 416   & 528  & 640   & 768  & 875  &  \\
+265: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 97    & 134 & 146   & 195  & 200  & 274  & 316  & 359  & 406   & 521  & 648   & 772  & 894  &  \\
+265: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 97    & 131 & 160   & 195  & 224  & 267  & 316  & 366  & 417   & 532  & 656   & 774  & 884  &  \\
+265: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 101   & 132 & 162   & 191  & 222  & 273  & 321  & 369  & 404   & 538  & 657   & 769  & 900  &  \\
+265: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 106   & 129 & 165   & 204  & 212  & 271  & 314  & 357  & 420   & 533  & 654   & 766  & 902  &  \\
+265: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 94    & 125 & 165   & 186  & 211  & 275  & 323  & 373  & 422   & 551  & 646   & 779  & 908  &  \\
+265: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 108   & 127 & 170   & 186  & 225  & 273  & 321  & 363  & 423   & 550  & 662   & 781  & 900  &  \\
+265: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 118   & 131 & 169   & 196  & 219  & 260  & 316  & 381  & 423   & 538  & 649   & 773  & 906  &  \\
+265: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 111   & 139 & 170   & 198  & 234  & 272  & 314  & 385  & 427   & 543  & 663   & 775  & 901  &  \\
+250: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 89   & 135  & 158  & 211  & 248   & 329  & 410   & 494  & 607  &  \\
+250: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 104  & 141  & 177  & 213  & 242   & 340  & 434   & 513  & 590  &  \\
+250: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 105  & 143  & 179  & 216  & 250   & 338  & 413   & 516  & 603  &  \\
+250: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 97   & 128  & 179  & 216  & 251   & 338  & 428   & 513  & 601  &  \\
+250: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 107  & 143  & 168  & 210  & 253   & 338  & 431   & 517  & 593  &  \\
+250: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 108  & 131  & 183  & 209  & 265   & 335  & 418   & 504  & 592  &  \\
+250: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 95   & 139  & 173  & 214  & 244   & 345  & 433   & 521  & 599  &  \\
+250: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 97   & 145  & 179  & 220  & 256   & 332  & 438   & 523  & 607  &  \\
+250: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 109  & 148  & 183  & 230  & 249   & 331  & 422   & 523  & 608  &  \\
+235: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 88    & 139  & 209   & 270  & 336  &  \\
+235: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 94    & 162  & 212   & 267  & 321  &  \\
+235: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 97    & 158  & 215   & 284  & 336  &  \\
+235: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 96    & 165  & 221   & 270  & 336  &  \\
+235: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 97    & 167  & 206   & 271  & 328  &  \\
+235: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 97    & 145  & 206   & 288  & 338  &  \\
+235: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 100   & 151  & 208   & 278  & 340  &  \\
+235: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 99    & 162  & 220   & 282  & 328  &  \\
+235: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 101   & 162  & 229   & 271  & 339  &  \\
+221: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 0     & 0    & 0     & 0    & 81   &  \\
+221: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 0     & 0    & 0     & 0    & 89   &  \\
+221: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 0     & 0    & 0     & 0    & 76   &  \\
+221: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 0     & 0    & 0     & 0    & 94   &  \\
+221: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 0     & 0    & 0     & 0    & 89   &  \\
+221: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 0     & 0    & 0     & 0    & 87   &  \\
+221: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 0     & 0    & 0     & 0    & 90   &  \\
+221: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 0     & 0    & 0     & 0    & 97   &  \\
+221: & 0     & 0    & 0     & 0   & 0      & 0     & 0      & 0    & 0     & 0   & 0     & 0    & 0    & 0    & 0    & 0    & 0     & 0    & 0     & 0    & 92   & 
+\end{tabular}
+\end{table}
+
+\newpage
+
+\section{MATLAB Script for Data Evaluation} 	\label{app:MATLAB}
+
+		\lstinputlisting[	label= lst:MATLABScript,
+	                 		caption = readDataFile\_PlotScript.m]
+							{readDataFile_PlotScript.m} 
+\end{appendices}
+
+\end{document}

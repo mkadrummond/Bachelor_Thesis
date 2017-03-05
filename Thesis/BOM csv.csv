@@ -1,0 +1,121 @@
+Sub-circuit,Part,Value,Device,Package,Description,Manufacturer,Manufacturer Product #
+0. Power supply,C00,100nF,C-EUC0805,C0805,"CAPACITOR (X7R, 50V general purpose ceramic cap)",Yageo ,CC0805KRX7R9BB104
+0. Power supply,C01,220uF,WCAP-ASLI_10X10.5(DXL),4.4X1.9X4.3(BXCXA),WCAP-ASLI Aluminum Electrolytic Capacitors,Würth Elektronik,865080657018
+0. Power supply,C02,220uF,WCAP-ASLI_10X10.5(DXL),4.4X1.9X4.3(BXCXA),WCAP-ASLI Aluminum Electrolytic Capacitors,Würth Elektronik,865080657018
+0. Power supply,C03,10uF,WCAP-ASLI_4X5.5(DXL),2.6X1.6X1(BXCXA),WCAP-ASLI Aluminum Electrolytic Capacitors,Würth Elektronik,865080440002
+0. Power supply,C04,1000uF,WCAP-ASLI_16X17(DXL),6.5X3.5X6(BXCXA),WCAP-ASLI Aluminum Electrolytic Capacitors,Würth Elektronik,865060663015
+0. Power supply,C05,100nF,C-EUC0805,C0805,"CAPACITOR (X7R, 50V general purpose ceramic cap)",Yageo ,CC0805KRX7R9BB104
+0. Power supply,C06,100nF,C-EUC0805,C0805,"CAPACITOR (X7R, 50V general purpose ceramic cap)",Yageo ,CC0805KRX7R9BB104 
+0. Power supply,C07,10uF,C-EUC1206,C1206,"CAPACITOR (X5R, 16V general purpose ceramic cap)",Kemet ,C1206C106K4PAC
+0. Power supply,C08,100nF,C-EUC0805,C0805,"CAPACITOR (X7R, 50V general purpose ceramic cap)",Yageo ,CC0805KRX7R9BB104
+0. Power supply,C09,n.i.,C-EUC1206,C1206,CAPACITOR,,
+0. Power supply,D00,,RS3G-E3/57T,DO-214AA,Surface Mount Fast Switching Rectifier,Vishay,RS3G-E3/57T
+0. Power supply,D01,,SMBJ24A,DO-214AA,600 Watt Transient Voltage Suppressor,Fairchild,SMBJ24A 
+0. Power supply,D02,,SS34,DO-214AB,Schottky Rectifier,Fairchild,SS34
+0. Power supply,J00,,PSS 254/2W,MOLEX-1X2_ANGLED,"CONNECTOR (Printstecker, Einzelstecker, gewinkelt 2-polig)",Würth Elektronik,61900211021
+0. Power supply,JP0,,PIN HEADER - 1X2,1X02,Pin header,,
+0. Power supply,K1,,69410106102,694108000000,WR-DC_DC Power Jack_Right Angled_SMT Center Pin Ø2.0_Plug ID Ø2.05_Plug OD Ø5.5_with 4 Soldering Pad & Peg,Würth Elektronik,694108000000
+0. Power supply,L1,100uH,SRR1208-101YL,SRR1208,Shielded High Power Inductor,Bourns,
+0. Power supply,L2,220uH,SRR1208-221KL,SRR1208,Shielded High Power Inductor,Bourns,SRR1208-221KL
+0. Power supply,L3,,WE-CBF_0805(WB/HS),WE-CBF_0805(W=3.0),EMI Suppression Ferrite Bead,Würth Elektronik,742792043
+0. Power supply,R00,270?,HP05W3,R0805,Thick Film Chip Resistors,Royalohm,HP05W3F2700T5E 
+0. Power supply,R01,0?,ERJ-6,R0805,Anti-Surge Thick Film Chip Resistors,Panasonic,ERJ-6GEY0R00V
+0. Power supply,U00,,LM2596S,TO263-5,SIMPLE SWITCHER® Power Converter 150 kHz 3A Step-Down Voltage Regulator,Texas Instruments,
+1. Buttons,C10,1uF,C-EUC1206,C1206,"CAPACITOR (X7R, 16V general purpose ceramic cap)",Yageo ,CC1206JKX7R7BB105 
+1. Buttons,C11,1uF,C-EUC1206,C1206,"CAPACITOR (X7R, 16V general purpose ceramic cap)",Yageo ,CC1206JKX7R7BB105 
+1. Buttons,C12,1uF,C-EUC1206,C1206,"CAPACITOR (X7R, 16V general purpose ceramic cap)",Yageo ,CC1206JKX7R7BB105 
+1. Buttons,C13,1uF,C-EUC1206,C1206,"CAPACITOR (X7R, 16V general purpose ceramic cap)",Yageo ,CC1206JKX7R7BB105 
+1. Buttons,C14,100nF,C-EUC0805,C0805,"CAPACITOR (X7R, 50V general purpose ceramic cap)",Yageo ,CC0805KRX7R9BB104
+1. Buttons,J10,,PSS 254/2G,MOLEX-1X2,"CONNECTOR (Printstecker, Einzelstecker, gerade, 2-polig)",Würth Elektronik,61900211121
+1. Buttons,J11,,PSS 254/2G,MOLEX-1X2,"CONNECTOR (Printstecker, Einzelstecker, gerade, 2-polig)",Würth Elektronik,61900211121
+1. Buttons,J12,,PSS 254/2G,MOLEX-1X2,"CONNECTOR (Printstecker, Einzelstecker, gerade, 2-polig)",Würth Elektronik,61900211121
+1. Buttons,R10,10k?,CR0805,R0805,Chip Resistors,Panasonic,CR0805-FX-1002ELF 
+1. Buttons,R11,1k?,HP05W3,R0805,Thick Film Chip Resistors,Royalohm,HP05W3F1001T5E
+1. Buttons,R12,10k?,CR0805,R0805,Chip Resistors,Panasonic,CR0805-FX-1002ELF 
+1. Buttons,R13,1k?,HP05W3,R0805,Thick Film Chip Resistors,Royalohm,HP05W3F1001T5E
+1. Buttons,R14,10k?,CR0805,R0805,Chip Resistors,Panasonic,CR0805-FX-1002ELF 
+1. Buttons,R15,1k?,HP05W3,R0805,Thick Film Chip Resistors,Royalohm,HP05W3F1001T5E
+1. Buttons,R16,10k?,CR0805,R0805,Chip Resistors,Panasonic,CR0805-FX-1002ELF 
+1. Buttons,R17,1k?,HP05W3,R0805,Thick Film Chip Resistors,Royalohm,HP05W3F1001T5E
+1. Buttons,U10,,SN74HC14DR,SOIC-14,HEX SCHMITT-TRIGGER INVERTERS,Texas Instruments,SN74HC14DR 
+1. Buttons,U11,,1EN11-VSM1BQ15,EN11,"Rotary Encoder, 1EN11-VSM1BQ15",TT Electronics,9302520100
+2. LEDs,LED1,,CHIP-LED,805,SMD-LED 0805 Blau 100 mcd 120 ° 20 mA 3.3 V Kingbright KP-2012QBC-D,Kingbright,KP-2012QBC-D
+2. LEDs,LED2,,CHIP-LED,805,SMD-LED 0805 Blau 100 mcd 120 ° 20 mA 3.3 V Kingbright KP-2012QBC-D,Kingbright,KP-2012QBC-D
+2. LEDs,LED3,,CHIP-LED,805,SMD-LED 0805 Blau 100 mcd 120 ° 20 mA 3.3 V Kingbright KP-2012QBC-D,Kingbright,KP-2012QBC-D
+2. LEDs,LED4,,CHIP-LED,805,SMD-LED 0805 Blau 100 mcd 120 ° 20 mA 3.3 V Kingbright KP-2012QBC-D,Kingbright,KP-2012QBC-D
+2. LEDs,Q20,,2N7002PW,SOT323,"60 V, 310 mA N-channel Trench MOSFET",NXP,"2N7002PW,115"
+2. LEDs,Q21,,2N7002PW,SOT323,"61 V, 310 mA N-channel Trench MOSFET",NXP,"2N7002PW,115"
+2. LEDs,Q22,,2N7002PW,SOT323,"62 V, 310 mA N-channel Trench MOSFET",NXP,"2N7002PW,115"
+2. LEDs,R20,100k?,ERJ-P06,R0805,Anti-Surge Thick Film Chip Resistors,,ERJ-P06J104V 
+2. LEDs,R21,270?,HP05W3,R0805,Thick Film Chip Resistors,Royalohm,HP05W3F2700T5E 
+2. LEDs,R22,100k?,ERJ-P06,R0805,Anti-Surge Thick Film Chip Resistors,Panasonic,ERJ-P06J104V 
+2. LEDs,R23,270?,HP05W3,R0805,Thick Film Chip Resistors,Royalohm,HP05W3F2700T5E 
+2. LEDs,R24,100k?,ERJ-P06,R0805,Anti-Surge Thick Film Chip Resistors,Panasonic,ERJ-P06J104V 
+2. LEDs,R25,270?,HP05W3,R0805,Thick Film Chip Resistors,Royalohm,HP05W3F2700T5E 
+"3. I2C, level shifter & LCD",C30,100nF,C-EUC0805,C0805,"CAPACITOR (X7R, 50V general purpose ceramic cap)",Yageo ,CC0805KRX7R9BB104
+"3. I2C, level shifter & LCD",C31,100nF,C-EUC0805,C0805,"CAPACITOR (X7R, 50V general purpose ceramic cap)",Yageo ,CC0805KRX7R9BB104
+"3. I2C, level shifter & LCD",C32,10uF,C-EUC1206,C1206,"CAPACITOR (X7R, 16V general purpose ceramic cap)",Kemet ,C1206C106K4PAC
+"3. I2C, level shifter & LCD",C33,100nF,C-EUC0805,C0805,"CAPACITOR (X7R, 50V general purpose ceramic cap)",Yageo ,CC0805KRX7R9BB104
+"3. I2C, level shifter & LCD",C34,n.i.,C-EUC0805,C0805,CAPACITOR,,
+"3. I2C, level shifter & LCD",C35,n.i.,C-EUC0805,C0805,CAPACITOR,,
+"3. I2C, level shifter & LCD",J3,,M05X2SHD,2X5-SHROUDED,"CONNECTOR (Stiftwanne 10-polig, Raster 2,54 mm, vergoldete Kontakte, gerade Ausführung ohne Verriegelung)",BKL Electronic,10120554
+"3. I2C, level shifter & LCD",Q30,,2N7002PW,SOT323,"63 V, 310 mA N-channel Trench MOSFET",NXP,"2N7002PW,115"
+"3. I2C, level shifter & LCD",Q31,,2N7002PW,SOT323,"64 V, 310 mA N-channel Trench MOSFET",NXP,"2N7002PW,115"
+"3. I2C, level shifter & LCD",R30,10k?,CR0805,R0805,Chip Resistors,Panasonic,CR0805-FX-1002ELF 
+"3. I2C, level shifter & LCD",R31,10k?,CR0805,R0805,Chip Resistors,Panasonic,CR0805-FX-1002ELF 
+"3. I2C, level shifter & LCD",R32,10k?,CR0805,R0805,Chip Resistors,Panasonic,CR0805-FX-1002ELF 
+"3. I2C, level shifter & LCD",R33,10k?,CR0805,R0805,Chip Resistors,Panasonic,CR0805-FX-1002ELF 
+"3. I2C, level shifter & LCD",R34,100?,0805S8,R0805,Thick Film Chip Resistors,Royalohm,0805S8F1000T5E 
+"3. I2C, level shifter & LCD",R35,100?,0805S8,R0805,Thick Film Chip Resistors,Royalohm,0805S8F1000T5E 
+4. CAN-Bus,C40,100nF,C-EUC0805,C0805,"CAPACITOR (X7R, 50V general purpose ceramic cap)",Yageo ,CC0805KRX7R9BB104
+4. CAN-Bus,C41,10uF,C-EUC1206,C1206,"CAPACITOR (X7R, 16V general purpose ceramic cap)",Kemet ,C1206C106K4PAC
+4. CAN-Bus,C42,100nF,C-EUC0805,C0805,"CAPACITOR (X7R, 50V general purpose ceramic cap)",Yageo ,CC0805KRX7R9BB104
+4. CAN-Bus,J4,,BINDER_M9_ANGLED,BINDER_M9_ANGLED,CONNECTOR,,09-0416-55-05
+4. CAN-Bus,R40,1k?,HP05W3,R0805,Thick Film Chip Resistors,Royalohm,HP05W3F1001T5E
+4. CAN-Bus,R41,1k?,HP05W3,R0805,Thick Film Chip Resistors,Royalohm,HP05W3F1001T5E
+4. CAN-Bus,R42,100k?,ERJ-P06,R0805,Anti-Surge Thick Film Chip Resistors,Panasonic,ERJ-P06J104V 
+4. CAN-Bus,R43,120?,HP05W3,R0805,Thick Film Chip Resistors,Royalohm,HP05W3J0121T5E 
+4. CAN-Bus,U40,,SN65HVD232DR,SOIC-8,3.3-V CAN Bus Transceivers,Texas Instruments,SN65HVD232DR 
+4. CAN-Bus,U41,,PESD2CAN,SOT23,CAN bus ESD protection diode,NXP,"PESD2CAN,215"
+5. Analogue inputs,C50,10uF,C-EUC1206,C1206,"CAPACITOR (X7R, 16V general purpose ceramic cap)",Kemet ,C1206C106K4PAC
+5. Analogue inputs,C51,100nF,C-EUC0805,C0805,"CAPACITOR (X7R, 50V general purpose ceramic cap)",Yageo ,CC0805KRX7R9BB104
+5. Analogue inputs,C52,1uF,C-EUC1206,C1206,"CAPACITOR (X7R, 16V general purpose ceramic cap)",Yageo ,CC1206JKX7R7BB105 
+5. Analogue inputs,C53,100nF,C-EUC0805,C0805,"CAPACITOR (X7R, 50V general purpose ceramic cap)",Yageo ,CC0805KRX7R9BB104
+5. Analogue inputs,C54,10uF,C-EUC1206,C1206,"CAPACITOR (X7R, 16V general purpose ceramic cap)",Kemet ,C1206C106K4PAC
+5. Analogue inputs,C55,100nF,C-EUC0805,C0805,"CAPACITOR (X7R, 50V general purpose ceramic cap)",Yageo ,CC0805KRX7R9BB104
+5. Analogue inputs,C56,100nF,C-EUC0805,C0805,"CAPACITOR (X7R, 50V general purpose ceramic cap)",Yageo ,CC0805KRX7R9BB104
+5. Analogue inputs,C57,n.i.,C-EUC0805,C0805,CAPACITOR,,
+5. Analogue inputs,C58,n.i.,C-EUC0805,C0805,CAPACITOR,,
+5. Analogue inputs,C59,n.i.,C-EUC0805,C0805,CAPACITOR,,
+5. Analogue inputs,C60,n.i.,C-EUC0805,C0805,CAPACITOR,,
+5. Analogue inputs,C61,n.i.,C-EUC0805,C0805,CAPACITOR,,
+5. Analogue inputs,C62,n.i.,C-EUC0805,C0805,CAPACITOR,,
+5. Analogue inputs,C63,n.i.,C-EUC0805,C0805,CAPACITOR,,
+5. Analogue inputs,C64,n.i.,C-EUC0805,C0805,CAPACITOR,,
+5. Analogue inputs,C65,100nF,C-EUC0805,C0805,"CAPACITOR (X7R, 50V general purpose ceramic cap)",Yageo ,CC0805KRX7R9BB104
+5. Analogue inputs,C66,100nF,C-EUC0805,C0805,"CAPACITOR (X7R, 50V general purpose ceramic cap)",Yageo ,CC0805KRX7R9BB104
+5. Analogue inputs,J50,,PSS 254/5W,MOLEX-1X5_ANGLED,"CONNECTOR (Printstecker, Einzelstecker, gewinkelt, 5-polig)",Würth Elektronik,61900511021
+5. Analogue inputs,J51,,PSS 254/3W,MOLEX-1X3_ANGLED,"CONNECTOR (Printstecker, Einzelstecker, gewinkelt, 3-polig)",Würth Elektronik,61900311021
+5. Analogue inputs,R500,75k?,R-EU_R0805,R0805,RESISTOR,Panasonic,ERA-6APB753V
+5. Analogue inputs,R501,16k?,R-EU_R0805,R0805,RESISTOR,Panasonic,ERA-6AEB163V
+5. Analogue inputs,R502,10k?,R-EU_R0805,R0805,RESISTOR,Panasonic,ERA-6YEB103V
+5. Analogue inputs,R503,10k?,R-EU_R0805,R0805,RESISTOR,Panasonic,ERA-6YEB103V
+5. Analogue inputs,R510,"71,5k?",R-EU_R0805,R0805,RESISTOR,Panasonic,ERA-6AEB7152V
+5. Analogue inputs,R511,6.2k?,R-EU_R0805,R0805,RESISTOR,Panasonic,ERA-6AEB622V
+5. Analogue inputs,R512,33.2k?,R-EU_R0805,R0805,RESISTOR,Panasonic,ERA-6AEB3322V
+5. Analogue inputs,R513,0?,R-EU_R0805,R0805,RESISTOR,Panasonic,ERJ-6GEY0R00V
+5. Analogue inputs,R520,47.5k?,R-EU_R0805,R0805,RESISTOR,Microtech ,CMF080547k50.110
+5. Analogue inputs,R521,0?,R-EU_R0805,R0805,RESISTOR,Panasonic,ERJ-6GEY0R00V
+5. Analogue inputs,R522,47k?,R-EU_R0805,R0805,RESISTOR,Panasonic,ERA-6AEB473V
+5. Analogue inputs,R523,10k?,R-EU_R0805,R0805,RESISTOR,Panasonic,ERA-6YEB103V
+5. Analogue inputs,R530,5?,ERJ-P14,R1210,Anti-Surge Thick Film Chip Resistors,Panasonic,ERJ-P14J4R7U
+5. Analogue inputs,R531,5?,ERJ-P14,R1210,Anti-Surge Thick Film Chip Resistors,Panasonic,ERJ-P14J4R7U
+5. Analogue inputs,R532,90.9k?,R-EU_R0805,R0805,RESISTOR,Panasonic,ERJ-1GEF9092C 
+5. Analogue inputs,R533,51k?,R-EU_R0805,R0805,RESISTOR,Panasonic,ERA-6APB513V
+5. Analogue inputs,R534,1k?,HP05W3,R0805,Thick Film Chip Resistors,Royalohm,HP05W3F1001T5E
+5. Analogue inputs,R535,1k?,HP05W3,R0805,Thick Film Chip Resistors,Royalohm,HP05W3F1001T5E
+5. Analogue inputs,R536,1k?,HP05W3,R0805,Thick Film Chip Resistors,Royalohm,HP05W3F1001T5E
+5. Analogue inputs,R537,1k?,HP05W3,R0805,Thick Film Chip Resistors,Royalohm,HP05W3F1001T5E
+5. Analogue inputs,U50,,MCP6001T-I/OT,SOT23-5,Single low-power OPAMP,Microchip Technology,MCP6001T-I/OT
+5. Analogue inputs,U51,,MCP6004-I/SL,SOIC-14,Quad low-power OPAMP,Microchip Technology,MCP6004-I/SL
+5. Analogue inputs,U52,,MAX4662,SSOP16,"2.5W, Quad, SPST, CMOS Analog Switches",Maxim Integrated,
